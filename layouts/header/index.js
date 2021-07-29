@@ -2,16 +2,22 @@ import React from 'react';
 import Image from 'next/image';
 import useSWR from 'swr';
 import Link from 'next/link';
-import { useUserInfo } from '../../hooks';
-import kyFetch from '../../api';
-import { showAmount } from '../../utils';
+import { useUserInfo } from 'hooks';
+import kyFetch from 'api';
+import { showAmount } from 'utils';
+import { logout } from 'utils/auth';
+import { GlobalContext } from 'contexts';
+
+// Images
+import logo from 'public/static/img/logo.svg';
 
 const Header = () => {
+    const [state, dispatch] = React.useContext(GlobalContext);
     const [user] = useUserInfo();
     const isLoggedIn = !!user;
     const { login } = user || {};
 
-    const { data: balanceData = {}, error } = useSWR('balance', async () => {
+    const { data: balanceData = {}, error } = useSWR(isLoggedIn ? 'balance' : null, async () => {
         const resp = await kyFetch.get('balance').json();
 
         return resp;
@@ -22,16 +28,18 @@ const Header = () => {
         <section className="top-line-section">
             <div className="wrapper">
                 <div className="top-line-wrap">
-                    <div className="burger">
+                    <div onClick={() => dispatch({ type: 'toggleMenu' })} className="burger">
                         <div className="line" />
                         <div className="line" />
                         <div className="line" />
                     </div>
                     <div className="top-left">
-                        <a className="logo">
-                            <img src="img/logo.svg" alt="" />
-                            <span>QuLab</span>
-                        </a>
+                        <Link href="/">
+                            <a className="logo">
+                                <Image src={logo} width="40" height="40" alt="" />
+                                <span>QuLab</span>
+                            </a>
+                        </Link>
                     </div>
                     <ul className="top-menu">
                         <li>
@@ -70,12 +78,12 @@ const Header = () => {
                                     </svg>
                                     <strong>{login}</strong>
                                 </p>
-                                <p><a href="#">Выйти</a></p>
+                                <p><a style={{cursor: 'pointer' }} onClick={() => logout()}>Выйти</a></p>
                             </>
                         ) : (
                             <>
-                                <a href=""><span>Войти</span></a>
-                                <a href="" className="button"><span>Регистрация</span></a>
+                                <Link href="/cabinet/login"><a><span>Войти</span></a></Link>
+                                <Link href="/cabinet/registration"><a className="button"><span>Регистрация</span></a></Link>
                             </>
                         )}
                     </div>

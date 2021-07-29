@@ -4,7 +4,7 @@ const withImages = require('next-images');
 module.exports = withTM(
     withImages({
         env: {
-            API_URL: 'http://localhost:3000',
+            API_URL: 'http://45.147.177.198:3000',
         },
     })
 )

@@ -4,7 +4,7 @@ import useSWR, { mutate } from 'swr';
 import { useForm } from 'react-hook-form';
 import kyFetch from 'api';
 import dayjs from 'dayjs';
-import BaseInput from 'components/Base/BaseInput';
+import BaseInput from '../../../components/base/BaseInput';;
 
 const defaultFormValue = {
     amount: null,
@@ -21,9 +21,7 @@ const Withdrawal = () => {
                 mutate('balance');
                 mutate('withdrawList');
             };
-        } catch (e) {
-            console.log(e.response);
-        }
+        } catch (e) {}
     }
 
     const { data: withdrawList = [], error } = useSWR('withdrawList', async () => {

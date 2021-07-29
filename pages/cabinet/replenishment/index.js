@@ -4,17 +4,28 @@ import dayjs from 'dayjs';
 import QRCode from "react-qr-code";
 import { useForm } from 'react-hook-form';
 import kyFetch from 'api';
-import BaseInput from 'components/Base/BaseInput';
+import Image from 'next/image';
+import BaseInput from 'components/base/BaseInput';;
+import payments from 'config/payments';
+
+// images
+import operation1 from 'public/static/img/operation1.svg';
+import btcImg from 'public/static/img/btc.svg';
 
 const defaultFormValue = {
     amount: null,
 }
 
+const statusClasses = ['green', 'yellow', 'red'];
+
 const Replenishment = () => {    
-    const { register, handleSubmit, reset, formState: { errors }, setError, clearErrors } = useForm();
+    const { register, handleSubmit, getValues, reset, formState: { errors }, setError, clearErrors } = useForm();
     const [qrCode, setQrCode] = useState(null);
+    const [amount, setAmount] = useState(null)
 
     const onSubmit = async data => {
+        setAmount(data.amount);
+
         try {
             const resp = await kyFetch.post('payments/replenishment', { json: data }).json();
             if (resp?.address) {
@@ -22,9 +33,7 @@ const Replenishment = () => {
                 mutate('replenishmentList');
                 setQrCode(resp?.address);
             };
-        } catch (e) {
-            console.log(e.response);
-        }
+        } catch (e) {}
     }
 
     const { data: replenishmentList = [], error } = useSWR('replenishmentList', async () => {
@@ -35,15 +44,19 @@ const Replenishment = () => {
                 amount,
                 date,
                 id,
-             }) => ({
-                 amount,
-                 date: dayjs(date).format('DD.MM.YYYY'),
-                 id,
+                status,
+            }) => ({
+                amount,
+                date: dayjs(date).format('DD.MM.YYYY'),
+                id,
+                status,
             })).reverse();
         }
 
         return [];
     })
+
+    const isReplenishmentListExist = replenishmentList.length;
 
     return (
         <div>
@@ -51,7 +64,9 @@ const Replenishment = () => {
 
             <div className="operation-block margin">
                 <div className="operation-title">
-                    <img src="img/operation1.svg" alt="" />
+                    <div style={{ marginRight: '10px' }}>
+                        <Image src={operation1} width="35" height="37" alt="" />
+                    </div>
                     <span>Пополнить баланс:</span>
                 </div>
                 <form  onSubmit={handleSubmit(onSubmit)} >
@@ -60,6 +75,7 @@ const Replenishment = () => {
                             <BaseInput
                                 label="Сумма пополнения:"
                                 placeholder="Введите сумму"
+                                type="number"
                                 {...register('amount', {
                                     required: {
                                         value: true,
@@ -77,9 +93,19 @@ const Replenishment = () => {
                             </div>
                         </div>							
                     </div>
-                    <div>{qrCode}</div>
-                    {qrCode && <QRCode value={qrCode} />}
                     <button type="submit" className="button">Пополнить</button>
+                    {qrCode && (
+                        <div style={{ margin: '10px 0' }}>
+                            <div style={{ marginBottom: '15px', fontSize: '18px' }}>
+                                {/* Добавиьт конкретную сумму */}
+                                Пополните данный кошелек на сумму {amount} и ожидайте зачисление, это может занять некоторое время. <span style={{ fontWeight: 'bold', fontSize: '22px' }}>{qrCode}</span>
+                            </div>
+                            <div><QRCode value={qrCode} /></div>
+                            <div>
+                                
+                            </div>
+                        </div>
+                    )}
                 </form>
             </div>
 
@@ -96,17 +122,25 @@ const Replenishment = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {replenishmentList.map(({ id, amount, date }) => (
-                            <tr>
-                                <td>{date}</td>
-                                <td>{amount} QU</td>
-                                <td>
-                                    <img src="img/btc.svg" alt="" />
-                                    BitCoin
-                                </td>
-                                <td className="green">Выполнено</td>
-                            </tr>
-                        ))}
+                        {isReplenishmentListExist ?
+                            replenishmentList.map(({ id, amount, date, status }) => (
+                                <tr key={id}>
+                                    <td>{date}</td>
+                                    <td>{amount} QU</td>
+                                    <td>
+                                        <span style={{ marginRight: '5px' }}>
+                                            <Image src={btcImg} width="18" height="18" alt="" />
+                                        </span>
+                                        BitCoin
+                                    </td>
+                                    <td className={statusClasses[status]}>{payments.statuses[status]}</td>
+                                </tr>
+                            )) : (
+                                <tr>
+                                    <td>Пополнений не было</td>
+                                </tr>
+                            )
+                        }
                     </tbody>
                 </table>
             </div>

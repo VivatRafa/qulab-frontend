@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image';
 import { useForm } from 'react-hook-form'
 import icons from 'config/icon';
-import BaseInput from 'components/Base/BaseInput';
+import BaseInput from '../../../components/base/BaseInput';;
 import AuthLayout from 'layouts/auth';
 import kyFetch from 'api';
 import Link from 'next/link';
@@ -15,13 +15,17 @@ const Login = () => {
 
     const { register, handleSubmit, formState: { errors }, setError, clearErrors } = useForm();
     const onSubmit = async data => {
-        
+        clearErrors();
+
         try {
-            const { accessToken } = await kyFetch.post('login', { json: data }).json();
+            const { accessToken, message } = await kyFetch.post('login', { json: data }).json();
+
             Cookies.set('jwt_access_token', accessToken);
             router.push('/cabinet/dashboard');
         } catch (e) {
-            console.log(e.response);
+            const errorResp = await e.response?.json();
+            const [errorMessage = 'Произошла какая-то ошбика, попробуйте позже'] = errorResp?.message || [];
+            setError('password', { type: 'serverError', message: errorMessage })
         }
 
     };
@@ -42,6 +46,7 @@ const Login = () => {
                             labelIcon={icons.email}
                             label="Эл. почта:"
                             placeholder="Введите вашу эл. почту"
+                            error={errors?.email?.message}
                             {...register('email', {
                                 required: {
                                     value: true,
@@ -55,7 +60,9 @@ const Login = () => {
                             labelIcon={icons.password}
                             label="Пароль:"
                             icon={icons.eye}
+                            error={errors?.password?.message}
                             placeholder="Введите пароль"
+                            type="password"
                             {...register('password', {
                                 required: {
                                     value: true,

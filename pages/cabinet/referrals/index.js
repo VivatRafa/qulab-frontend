@@ -4,6 +4,7 @@ import useSWR from 'swr';
 import kyFetch from 'api';
 import dayjs from 'dayjs';
 import { copyTextToClipboard, showAmount } from 'utils';
+import BaseReferralLink from '../../../components/base/BaseReferralLink';
 
 const Referrals = () => {
 	const { data: topReferrals = [], error } = useSWR('referralTop', async () => {
@@ -141,13 +142,7 @@ const Referrals = () => {
 	
 					<div className="money-wrap">
 						<div className="money-item full">
-							<div className="money-item-title">
-								<img src="img/money4.svg" alt="" />
-								<span className="purpur opacity">Реферальная ссылка</span>
-							</div>
-							<div className="referal-link">https://QuLab.club/?ref=user</div>
-							{/* eslint-disable */}
-							<a onClick={() => copyTextToClipboard(`https://QuLab.club/?ref=${id}`)} className="button1">Скопировать ссылку</a>
+							<BaseReferralLink />
 						</div>
 						<div className="money-item">
 							<div className="money-item-title">

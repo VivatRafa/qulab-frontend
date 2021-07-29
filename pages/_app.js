@@ -6,12 +6,15 @@ import { useEffect } from 'react';
 
 import '../styles/globals.scss';
 import { getAccessToken, logout } from '../utils/auth';
+import { GlobalProvider } from '../contexts';
 
 const swrConfig = {
   revalidateOnFocus: false,
 }
 
-const noNeedAuthPages = ['Registration', 'Login', 'PasswordRecovery', 'Home'];
+const landingPages = ['Home', 'About', 'Faq', 'Reviews'];
+const notAvailableForAuth = ['Registration', 'Login', 'PasswordRecovery'];
+
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -19,21 +22,29 @@ function MyApp({ Component, pageProps }) {
   const PageName = Component?.name;
 
   useEffect(() => {
-    const isNeedAuthPage = !noNeedAuthPages.includes(PageName);
-    if (isNeedAuthPage && !getAccessToken()) logout();
-    if (!isNeedAuthPage && getAccessToken()) router.push('/cabinet/dashboard');
+    const isNotAvailableForAuth = notAvailableForAuth.includes(PageName);
+    const isCabinetPage = ![...landingPages, ...notAvailableForAuth].includes(PageName);
+
+    if (isCabinetPage && !getAccessToken()) logout();
+    if (isNotAvailableForAuth && getAccessToken()) router.push('/cabinet/dashboard');
   }, [])
+  
+  const isCabinetPage = router.asPath.includes('cabinet');
 
   return (
-    <div className="page">
-      <SWRConfig
-        value={swrConfig}
-      >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+    <div className={`${isCabinetPage ? 'cabinet-page' : 'land-page'}`}>
+      <div className="page">
+        <SWRConfig
+          value={swrConfig}
+        >
+          <GlobalProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </GlobalProvider>
 
-      </SWRConfig>
+        </SWRConfig>
+      </div>
     </div>
   )
 }

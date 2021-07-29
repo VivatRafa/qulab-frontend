@@ -3,28 +3,37 @@ import Image from 'next/image';
 import useSWR from 'swr';
 import Big from 'big.js';
 import dayjs from 'dayjs';
+import kyFetch from 'api';
 
-const DepositeHistory = () => {
-    // const { data: depositeList = [], error } = useSWR('depositeList', async () => {
-    //     const resp = await kyFetch.get('deposite').json();
+import btcImg from 'public/static/img/btc.svg';
+import payments from '../../../config/payments';
+
+const operationsType = ['Депозит', 'Вывод', 'Пополнение'];
+const statusClasses = ['green', 'yellow', 'red'];
+
+const OperationsHistory = () => {
+    const { data: operationsList = [], error } = useSWR('operationsList', async () => {
+        const resp = await kyFetch.get('operations').json();
         
-    //     if (resp) {
-    //         return resp.map(({ amount, date, profit, id, status_id: statusId }) => {
-    //             const sum = Big(amount).plus(Big(profit)).toNumber();
+        if (resp) {
+            const operations = resp
+                .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+                .map(({ id, amount, type, status, date }) => ({
+                    id,
+                    amount,
+                    type,
+                    status,
+                    date: dayjs(date).format('DD.MM.YYYY'),
+                }));
 
-    //             return {
-    //                 amount,
-    //                 date: dayjs(date).format('DD.MM.YYYY'),
-    //                 id,
-    //                 statusId,
-    //                 profit,
-    //                 sum,
-    //             }
-    //         }).reverse();
-    //     }
+            return operations;
+        }
 
-    //     return [];
-    // })
+        return [];
+    })
+
+    const isOperationsExist = operationsList.length;
+    
     return (
         <div>
             <h1>История операций</h1>
@@ -41,46 +50,25 @@ const DepositeHistory = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>21.05.2021</td>
-                            <td>Вывод</td>
-                            <td>124.67 QU</td>
-                            <td>
-                                <img src="img/btc.svg" alt="" />
-                                BitCoin
-                            </td>
-                            <td className="green">Выполнено</td>
-                        </tr>
-                        <tr>
-                            <td>21.05.2021</td>
-                            <td>Пополнение</td>
-                            <td>124.67 QU</td>
-                            <td>
-                                <img src="img/btc.svg" alt="" />
-                                BitCoin
-                            </td>
-                            <td className="red">Ошибка</td>
-                        </tr>
-                        <tr>
-                            <td>21.05.2021</td>
-                            <td>Вывод</td>
-                            <td>124.67 QU</td>
-                            <td>
-                                <img src="img/btc.svg" alt="" />
-                                BitCoin
-                            </td>
-                            <td className="green">Выполнено</td>
-                        </tr>
-                        <tr>
-                            <td>21.05.2021</td>
-                            <td>Пополнение</td>
-                            <td>124.67 QU</td>
-                            <td>
-                                <img src="img/btc.svg" alt="" />
-                                BitCoin
-                            </td>
-                            <td className="green">Выполнено</td>
-                        </tr>
+                        {isOperationsExist ? 
+                        operationsList.map(({ id, amount, status, date, type }) => (
+                            <tr key={`${type}_${id}`}>
+                                <td>{date}</td>
+                                <td>{operationsType[type]}</td>
+                                <td>{amount} QU</td>
+                                <td>
+                                    <span style={{ marginRight: '5px' }}>
+                                        <Image src={btcImg} width="18" height="18" alt="" />
+                                    </span>
+                                    BitCoin
+                                </td>
+                                <td className={statusClasses[status]}>{payments.statuses[status]}</td>
+                            </tr>
+                        )) : (
+                            <tr>
+                                <td>Операций не было</td>
+                            </tr>
+                        )}
                     </tbody>
                 </table>
             </div>
@@ -88,4 +76,4 @@ const DepositeHistory = () => {
     )
 }
 
-export default DepositeHistory
+export default OperationsHistory

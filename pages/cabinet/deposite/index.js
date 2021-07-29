@@ -2,7 +2,7 @@ import React from 'react'
 import { mutate } from 'swr';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
-import BaseInput from 'components/Base/BaseInput';
+import BaseInput from '../../../components/base/BaseInput';;
 import kyFetch from 'api';
 
 const depositeTarrifs = [
@@ -36,7 +36,7 @@ const Deposite = () => {
                 mutate('depositeList');
             };
         } catch (e) {
-            console.log(e.response);
+            
         }
     }
     return (

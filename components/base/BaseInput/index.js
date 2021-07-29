@@ -18,6 +18,7 @@ const BaseInput = forwardRef(
             inputClassName,
             error,
             icon,
+            type,
             onIconClick,
         },
         ref
@@ -41,12 +42,12 @@ const BaseInput = forwardRef(
                         readOnly={readonly}
                         placeholder={placeholder}
                         onChange={onChange}
-                        type=""
+                        type={type}
                     />
                     {/* eslint-disable-next-line */}
                     {/* <img src={icon} onClick={onIconClick} alt="icon" /> */}
                 </div>
-                {error && <div className="">{error}</div>}
+                {error && <div className={styles.error}>{error}</div>}
             </div>
         )
 )

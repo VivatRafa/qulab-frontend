@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 import ky from 'ky';
-import { getAccessToken } from '../utils/auth';
+import { getAccessToken, logout } from '../utils/auth';
 
 const AuthHook = (request, options) => {
     const accessToken = getAccessToken();
@@ -10,10 +10,10 @@ const AuthHook = (request, options) => {
     }
 }
 
-const LogoutHook = (request, options) => {
-    const isUnauthorizedError = request.status === 401;
+const LogoutHook = (request, options, res) => {
+    const isUnauthorizedError = res.status === 401;
 
-    // if (isUnauthorizedError) logout();
+    if (isUnauthorizedError) logout();
 }
 const kyFetch = ky.extend({
     headers: {
@@ -23,7 +23,7 @@ const kyFetch = ky.extend({
     credentials: 'include',
     hooks: {
         beforeRequest: [AuthHook],
-        afterResponse: [],
+        afterResponse: [LogoutHook],
     }
 });
 

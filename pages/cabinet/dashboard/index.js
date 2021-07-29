@@ -5,9 +5,13 @@ import dayjs from 'dayjs';
 import { useUserInfo } from 'hooks';
 import { copyTextToClipboard, showAmount } from 'utils';
 import kyFetch from 'api';
+import Link from 'next/link';
+import BaseReferralLink from 'components/base/BaseReferralLink';
+import Big from 'big.js';
 
 const Dashboard = () => {
     const [user] = useUserInfo();
+
     const { data: userData = {} } = useSWR('userInfo', async () => {
         const resp = await kyFetch.get('users').json();
 
@@ -24,6 +28,16 @@ const Dashboard = () => {
         return resp;
     })
 
+    const { data: depositeIncome = 0 } = useSWR('depositeList', async () => {
+        const resp = await kyFetch.get('deposite').json();
+        
+        if (resp) {
+            return resp.reduce((sum, { profit }) => Big(sum).plus(Big(profit)).toNumber(), 0);
+        }
+
+        return 0;
+    })
+
     const {
         balance = 0,
         invested = 0,
@@ -32,6 +46,8 @@ const Dashboard = () => {
     } = balanceData;
     const { lastActivity, registrationDate } = userData;
     const { id } = user || {};
+
+    const referralAndDepositeSum = Big(depositeIncome).plus(Big(referral)).toNumber();
     return (
         <div>
             <h1>Главная</h1>
@@ -104,7 +120,7 @@ const Dashboard = () => {
                         <span className="purpur opacity">Ваш баланс</span>
                     </div>
                     <p className="purpur fz24">{showAmount(balance)} QU</p>
-                    <a href="#" className="button">Пополнить</a>
+                    <Link href="/cabinet/replenishment"><a className="button">Пополнить</a></Link>
                 </div>
                 <div className="money-item">
                     <div className="money-item-title">
@@ -112,7 +128,7 @@ const Dashboard = () => {
                         <span className="purpur opacity">Инвестировано:</span>
                     </div>
                     <p className="purpur fz24">{showAmount(invested)} QU</p>
-                    <a href="#" className="button">Инвестировать</a>
+                    <Link href="/cabinet/deposite"><a className="button">Инвестировать</a></Link>
                 </div>
                 <div className="money-item">
                     <div className="money-item-title">
@@ -120,16 +136,10 @@ const Dashboard = () => {
                         <span className="purpur opacity">Выведено средств:</span>
                     </div>
                     <p className="purpur fz24">{showAmount(withdrawn)} QU</p>
-                    <a href="#" className="button1">Вывести</a>
+                    <Link href="/cabinet/withdraw"><a className="button1">Вывести</a></Link>
                 </div>
                 <div className="money-item half">
-                    <div className="money-item-title">
-                        <img src="img/money4.svg" alt="" />
-                        <span className="purpur opacity">Реферальная ссылка</span>
-                    </div>
-                    <div className="referal-link">{`https://QuLab.club/?ref=${id}`}</div>
-                    {/* eslint-disable */}
-                    <a className="button1" onClick={() => copyTextToClipboard(`https://QuLab.club/?ref=${id}`)}>Скопировать ссылку</a>
+                    <BaseReferralLink />
                 </div>
                 <div className="money-item">
                     <div className="money-item-title">
@@ -137,27 +147,27 @@ const Dashboard = () => {
                         <span className="purpur opacity">Реферальные:</span>
                     </div>
                     <p className="purpur fz24">{showAmount(referral)} QU</p>
-                    <a href="#" className="button">Подробнее</a>
+                    <Link href="/cabinet/referrals"><a className="button">Подробнее</a></Link>
                 </div>
             </div>
 
             <div className="graph-block">
-                <div className="graph-left" />
+                {/* <div className="graph-left" /> */}
                 <div className="graph-right">
                     <h4>Доход за весь период:</h4>
 
                     <ul>
                         <li className="yellow">
                             Депозиты:
-                            <span className="block purpur">0.00 QU</span>				
+                            <span className="block purpur">{showAmount(depositeIncome)} QU</span>
                         </li>
                         <li className="green">
                             Партнерская программа:
-                            <span className="block purpur">0.00 QU</span>	
+                            <span className="block purpur">{showAmount(referral)} QU</span>	
                         </li>
                         <li className="no-list-style">
                             Суммарный доход:
-                            <span className="block fz24 purpur">0.00 QU</span>
+                            <span className="block fz24 purpur">{showAmount(referralAndDepositeSum)} QU</span>
                         </li>
                     </ul>
                 </div>

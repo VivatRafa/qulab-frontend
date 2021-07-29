@@ -31,6 +31,8 @@ module.exports = {
                     ['styles', './styles'],
                     ['utils', './utils'],
                     ['api', './api'],
+                    ['public', './public'],
+                    ['contexts', './contexts'],
                 ],
             },
         },

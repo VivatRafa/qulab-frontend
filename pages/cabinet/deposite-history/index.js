@@ -26,6 +26,8 @@ const DepositeHistory = () => {
         return [];
     })
     
+    const isDepositeListExist = depositeList?.length;
+
     return (
         <div>
             <h1>История депозитов</h1>
@@ -42,15 +44,21 @@ const DepositeHistory = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {depositeList.map(({ amount, profit, id, date, sum }) => (
-                            <tr key={id}>
-                                <td>{date}</td>
-                                <td>{amount} QU</td>
-                                <td>{profit} QU</td>
-                                <td>{sum} QU</td>
-                                <td className="green">Выполнено</td>
-                            </tr>
-                        ))}
+                        {isDepositeListExist? 
+                            depositeList?.map(({ amount, profit, id, date, sum }) => (
+                                <tr key={id}>
+                                    <td>{date}</td>
+                                    <td>{amount} QU</td>
+                                    <td>{profit} QU</td>
+                                    <td>{sum} QU</td>
+                                    <td className="green">Выполнено</td>
+                                </tr>
+                            )) : (
+                                <tr>
+                                    <td>Депозитов не было</td>
+                                </tr>
+                            )
+                        }
                     </tbody>
                 </table>
             </div>

@@ -7,7 +7,7 @@ import icons from 'config/icon';
 import AuthLayout from 'layouts/auth'
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
-import BaseInput from 'components/Base/BaseInput';
+import BaseInput from '../../../components/base/BaseInput';
 import kyFetch from 'api';
 
 const Registration = () => {
@@ -17,9 +17,10 @@ const Registration = () => {
 
     useEffect(() => {
         if (ref) setValue('referralLink', window.location.href);
-    }, [])
+    }, [ref])
 
     const onSubmit = async data => {
+        clearErrors();
         const { login, email, password, referralLink } = data;
 
         let referralIdFromLink = null;
@@ -39,7 +40,9 @@ const Registration = () => {
             Cookies.set('jwt_access_token', accessToken);
             router.push('/cabinet/dashboard');
         } catch (e) {
-            console.log(e.response);
+            const errorResp = await e.response?.json();
+            const [errorMessage = 'Произошла какая-то ошбика, попробуйте позже'] = errorResp?.message || [];
+            setError('rules', { type: 'serverError', message: errorMessage })
         }
     };
 
@@ -92,6 +95,7 @@ const Registration = () => {
                             label="Пароль:"
                             placeholder="Придумайте пароль"
                             error={errors?.password?.message}
+                            type="password"
                             {...register('password', {
                                 required: {
                                     value: true,
@@ -106,6 +110,7 @@ const Registration = () => {
                             labelIcon={icons.password}
                             label="Проверка пароля:"
                             placeholder="Повторите пароль"
+                            type="password"
                             error={errors?.repeatPassword?.message}
                             {...register('repeatPassword', {
                                 required: {
@@ -113,7 +118,7 @@ const Registration = () => {
                                     message: "Обязательное поле"
                                 },
                                 validate: value =>
-                                    value === getValues('password') || "Пароли не совпадает"
+                                    value === getValues('password') || "Пароли не совпадают"
                             })}
                         />
                     </div>
@@ -135,7 +140,7 @@ const Registration = () => {
                             {...register('rules', {
                                 required: {
                                     value: true,
-                                    message: "Обязательное поле"
+                                    message: "Необходимо принять правила проекта"
                                 }
                             })}
                         />
@@ -145,6 +150,7 @@ const Registration = () => {
                         {/* <Link href="/login"></Link> */}
                         </label>
                     </div>
+                    {errors?.rules?.message && <div style={{ color: '#dc3545', margin: '5px 0', fontSize: '14px' }}>{errors?.rules?.message}</div>}
 
                     <button type="submit" className="button">Регистрация</button>
                     <Link href="/cabinet/login"><a className="reg-link">Уже есть аккаунт?</a></Link>

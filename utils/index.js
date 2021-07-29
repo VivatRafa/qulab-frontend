@@ -2,6 +2,10 @@ export const showAmount = amount => amount || '0.00';
 
 function fallbackCopyTextToClipboard(text) {
     const textArea = document.createElement('textarea');
+    // Avoid scrolling to bottom
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
     textArea.value = text;
     document.body.appendChild(textArea);
     textArea.focus();

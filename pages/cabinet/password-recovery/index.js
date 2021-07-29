@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import icons from 'config/icon';
-import BaseInput from 'components/Base/BaseInput';
+import BaseInput from '../../../components/base/BaseInput';;
 import AuthLayout from 'layouts/auth';
 
 

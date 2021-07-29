@@ -7,16 +7,6 @@ import Landing from '../layouts/landing';
 
 const Home = () => (
     <>
-      <ul className="mob-menu">
-        <li><a href="about.html">О нас</a></li>
-        <li><a href="investoru.html">Инвестору</a></li>
-        <li><a href="program.html">Премиальная программа</a></li>
-        <li><a href="reviews.html">Отзывы</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-      </ul>
-
-      <div className="bg-block" />
-
       <header>
         <img src="img/header-circle.svg" alt="" className="header-circle" />
         <section className="top-line-section">
@@ -547,47 +537,6 @@ const Home = () => (
           </div>
         </div>
       </section>
-
-      <footer>
-        <div className="wrapper">
-          <div className="footer-wrap">
-            <div className="footer-left">
-              <div className="footer-item">
-                <h4>Информация</h4>
-                <ul>
-                  <li><a href="about.html"><span>О компании</span></a></li>
-                  <li><a href="investoru.html"><span>Инвестору</span></a></li>
-                  <li><a href="program.html"><span>Премиальная программа</span></a></li>
-                </ul>
-              </div>
-              <div className="footer-item">
-                <h4>Помощь</h4>
-                <ul>
-                  <li><a href="faq.html"><span>FAQ</span></a></li>
-                  <li><a href="reviews.html"><span>Отзывы</span></a></li>
-                </ul>
-              </div>
-              <div className="footer-item">
-                <h4>Личный кабинет</h4>
-                <ul>
-                  <li><a href="reg.html"><span>Регистрация</span></a></li>
-                  <li><a href="login.html"><span>Войти</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div className="footer-right">
-              <div className="footer-logo">
-                <img src="img/logo.svg" alt="" />
-                <span>QuLab</span>
-              </div>
-              <div className="footer-button">
-                <a href="" className="button">Инвестировать</a>
-              </div>
-            </div>
-          </div>
-          <div className="footer-bottom">&copy; 2021 QuLab.ru. Все права защищены</div>
-        </div>
-      </footer>
     </>
   )
 
