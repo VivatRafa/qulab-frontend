@@ -31,7 +31,7 @@ const Footer = () => (
                     </div>
                     <div className="footer-right">
                         <div className="footer-logo">
-                            <img src="img/logo.svg" alt="" />
+                            <Image src="/static/img/logo.svg"  width="55" height="55"/>
                             <span>QuLab</span>
                         </div>
                         <div className="footer-button">

@@ -15,7 +15,7 @@ const BaseReferralLink = () => {
     return (
         <div>
             <div className="money-item-title">
-                <img src="img/money4.svg" alt="" />
+                <img src="/static/img/money4.svg" alt="" width="36" height="36" />
                 <span className="purpur opacity">Реферальная ссылка</span>
             </div>
             <div className="referal-link">{refLink}</div>

@@ -23,134 +23,165 @@ const Menu = () => {
 
             <ul>
                 <li className={router.asPath === '/cabinet/dashboard' ? 'active' : ''}>
-                    <Link href="/cabinet/dashboard">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#home" />
-                            </svg>
-                            <span>Главная</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false });
+                        router.push('/cabinet/dashboard')
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#home" />
+                        </svg>
+                        <span>Главная</span>
+                    </a>
                 </li>
                 <li className={router.asPath === '/cabinet/replenishment' ? 'active' : ''}>
-                    <Link href="/cabinet/replenishment">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#balance" />
-                            </svg>
-                            <span>Пополнить баланс</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/replenishment');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#balance" />
+                        </svg>
+                        <span>Пополнить баланс</span>
+                    </a>
                 </li>
                 <li className={router.asPath === '/cabinet/deposite' ? 'active' : ''}>
-                    <Link href="/cabinet/deposite">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#deposit" />
-                            </svg>
-                            <span>Сделать депозит</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/deposite');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#deposit" />
+                        </svg>
+                        <span>Сделать депозит</span>
+                    </a>
                 </li>
-                <li className={router.asPath === '/cabinet/deposite' ? 'active' : ''}>
-                    <Link href="/cabinet/deposite-history">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#history-deposits" />
-                            </svg>
-                            <span>История депозитов</span>
-                        </a>
-                    </Link>
+                <li className={router.asPath === '/cabinet/deposite-history' ? 'active' : ''}>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/deposite-history');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#history-deposits" />
+                        </svg>
+                        <span>История депозитов</span>
+                    </a>
                 </li>
                 <li className={router.asPath === '/cabinet/operations' ? 'active' : ''}>
-                    <Link href="/cabinet/operations-history">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#history-operations" />
-                            </svg>
-                            <span>История операций</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/operations-history');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#history-operations" />
+                        </svg>
+                        <span>История операций</span>
+                    </a>
                 </li>
                 <li className={router.asPath === '/cabinet/withdraw' ? 'active' : ''}>
-                    <Link href="/cabinet/withdraw">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#output" />
-                            </svg>
-                            <span>Вывод средств</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/withdraw');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#output" />
+                        </svg>
+                        <span>Вывод средств</span>
+                    </a>
                 </li>
                 {/* <li className={router.asPath === '/cabinet/perevodi' ? 'active' : ''}>
-                    <Link href="/cabinet/perevodi">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#inner-transactions" />
-                            </svg>
-                            <span>Внутренние переводы</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/perevodi');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#inner-transactions" />
+                        </svg>
+                        <span>Внутренние переводы</span>
+                    </a>
                 </li> */}
                 <li className={router.asPath === '/cabinet/referrals' ? 'active' : ''}>
-                    <Link href="/cabinet/referrals">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#referals" />
-                            </svg>
-                            <span>Рефералы</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/referrals');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#referals" />
+                        </svg>
+                        <span>Рефералы</span>
+                    </a>
                 </li>
                 <li className={router.asPath === '/cabinet/structure' ? 'active' : ''}>
-                    <Link href="/cabinet/structure">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#structure" />
-                            </svg>
-                            <span>Структура</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/structure');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#structure" />
+                        </svg>
+                        <span>Структура</span>
+                    </a>
                 </li>
                 {/* <li className={router.asPath === '/cabinet/tickets' ? 'active' : ''}>
-                    <Link href="/cabinet/tickets">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#tickets" />
-                            </svg>
-                            <span>Тикеты</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/tickets');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#tickets" />
+                        </svg>
+                        <span>Тикеты</span>
+                    </a>
                 </li> */}
                 <li className={router.asPath === '/cabinet/settings' ? 'active' : ''}>
-                    <Link href="/cabinet/settings">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#settings" />
-                            </svg>
-                            <span>Настройки</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/settings');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#settings" />
+                        </svg>
+                        <span>Настройки</span>
+                    </a>
                 </li>
                 <li className={router.asPath === '/cabinet/asd' ? 'active' : ''}>
-                    <Link href="/cabinet/asd">
-                        <a>
-                            <svg width="18" height="18">
-                                <use xlinkHref="sprites.svg#logout" />
-                            </svg>
-                            <span>Выйти</span>
-                        </a>
-                    </Link>
+                    <a style={{ cursor: 'pointer' }} onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/cabinet/asd');
+                    }}>
+                        <svg width="18" height="18">
+                            <use xlinkHref="sprites.svg#logout" />
+                        </svg>
+                        <span>Выйти</span>
+                    </a>
                 </li>
             </ul>
 
             <ul className="aside-mob-menu">
-                <li><a href="#">О нас</a></li>
-                <li><a href="#">Инвестору</a></li>
-                <li><a href="#">Премиальная программа</a></li>
-                <li><a href="#">Отзывы</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li>
+                    <Link href="/about">
+                        <a>О нас</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/investor">
+                        <a>Инвестору</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/program">
+                        <a>Премиальная программа</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/reviews">
+                        <a>Отзывы</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/faq">
+                        <a>FAQ</a>
+                    </Link>
+                </li>
             </ul>
         </aside>
     )

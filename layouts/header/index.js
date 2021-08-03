@@ -11,7 +11,7 @@ import { GlobalContext } from 'contexts';
 // Images
 import logo from 'public/static/img/logo.svg';
 
-const Header = () => {
+const Header = ({ isLanding }) => {
     const [state, dispatch] = React.useContext(GlobalContext);
     const [user] = useUserInfo();
     const isLoggedIn = !!user;
@@ -25,72 +25,76 @@ const Header = () => {
 
     const { balance } = balanceData;
     return (
-        <section className="top-line-section">
-            <div className="wrapper">
-                <div className="top-line-wrap">
-                    <div onClick={() => dispatch({ type: 'toggleMenu' })} className="burger">
-                        <div className="line" />
-                        <div className="line" />
-                        <div className="line" />
+        <>
+            {isLanding && <img src="img/header-circle.svg" alt="" className="header-circle"/>}
+            <section className="top-line-section">
+                <div className="wrapper">
+                    <div className="top-line-wrap">
+                        <div onClick={() => dispatch({ type: 'toggleMenu' })} className="burger">
+                            <div className="line" />
+                            <div className="line" />
+                            <div className="line" />
+                        </div>
+                        <div className="top-left">
+                            <Link href="/">
+                                <a className="logo">
+                                    <Image src={logo} width="40" height="40" alt="" />
+                                    <span>QuLab</span>
+                                </a>
+                            </Link>
+                        </div>
+                        <ul className="top-menu">
+                            <li>
+                                <Link href="/about">
+                                    <a><span>О нас</span></a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/investor">
+                                    <a><span>Инвестору</span></a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/program">
+                                    <a><span>Премиальная программа</span></a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/reviews">
+                                    <a><span>Отзывы</span></a>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/faq">
+                                    <a><span>FAQ</span></a>
+                                </Link>
+                            </li>
+                        </ul>
+                        <div className="top-right">
+                            {isLoggedIn ? (
+                                <>
+                                    <p>Баланс:&nbsp;<span>{showAmount(balance)} QU</span></p>
+                                    <Link href="/cabinet/dashboard">
+                                        <p style={{ cursor: 'pointer' }}>
+                                            <svg width="16" height="18">
+                                                <use xlinkHref="#user" />
+                                            </svg>
+                                            <strong>{login}</strong>
+                                        </p>
+                                    </Link>
+                                    <p><a style={{cursor: 'pointer' }} onClick={() => logout()}>Выйти</a></p>
+                                </>
+                            ) : (
+                                <>
+                                    <Link href="/cabinet/login"><a><span>Войти</span></a></Link>
+                                    <Link href="/cabinet/registration"><a className="button"><span>Регистрация</span></a></Link>
+                                </>
+                            )}
+                        </div>
                     </div>
-                    <div className="top-left">
-                        <Link href="/">
-                            <a className="logo">
-                                <Image src={logo} width="40" height="40" alt="" />
-                                <span>QuLab</span>
-                            </a>
-                        </Link>
-                    </div>
-                    <ul className="top-menu">
-                        <li>
-                            <Link href="/about">
-                                <a><span>О нас</span></a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/investor">
-                                <a><span>Инвестору</span></a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/premium-program">
-                                <a><span>Премиальная программа</span></a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/reviews">
-                                <a><span>Отзывы</span></a>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/faq">
-                                <a><span>FAQ</span></a>
-                            </Link>
-                        </li>
-                    </ul>
-                    <div className="top-right">
-                        {isLoggedIn ? (
-                            <>
-                                <p>Баланс:&nbsp;<span>{showAmount(balance)} QU</span></p>
-                                <p>
-                                    <svg width="16" height="18">
-                                        <use xlinkHref="#user" />
-                                    </svg>
-                                    <strong>{login}</strong>
-                                </p>
-                                <p><a style={{cursor: 'pointer' }} onClick={() => logout()}>Выйти</a></p>
-                            </>
-                        ) : (
-                            <>
-                                <Link href="/cabinet/login"><a><span>Войти</span></a></Link>
-                                <Link href="/cabinet/registration"><a className="button"><span>Регистрация</span></a></Link>
-                            </>
-                        )}
-                    </div>
-                    <div className="top-right" />
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     )
 }
 

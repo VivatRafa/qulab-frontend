@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import BaseInput from '../../../components/base/BaseInput';;
 import kyFetch from 'api';
+import BaseDepositeCalculator from '../../../components/base/BaseDepositeCalculator';
 
 const depositeTarrifs = [
     {
@@ -28,8 +29,13 @@ const defaultFormValue = {
 const Deposite = () => {
     const { register, handleSubmit, reset, formState: { errors }, setError, clearErrors } = useForm();
     const onSubmit = async data => {
+
+        const newData = {
+            ...data,
+            amount: Number(data.amount),
+        }
         try {
-            const resp = await kyFetch.post('deposite', { json: data }).json();
+            const resp = await kyFetch.post('deposite', { json: newData }).json();
             if (resp?.success) {
                 reset(defaultFormValue);
                 mutate('balance');
@@ -73,7 +79,8 @@ const Deposite = () => {
                                     required: {
                                         value: true,
                                         message: "Обязательное поле"
-                                    }
+                                    },
+                                    valueAsNumber: true,
                                 })}
                             />
                         </div>
@@ -83,6 +90,8 @@ const Deposite = () => {
             </div>
 
             <h3>Калькулятор доходности</h3>
+
+            <BaseDepositeCalculator withoutButton />
 
             <div className="info-section">
                 <h2>Информация о комиссии <br/>и условиях пополнения</h2>

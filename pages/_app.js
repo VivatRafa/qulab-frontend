@@ -3,16 +3,18 @@ import DefaultLayout from 'layouts/default'
 import { SWRConfig } from 'swr';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-
-import '../styles/globals.scss';
 import { getAccessToken, logout } from '../utils/auth';
 import { GlobalProvider } from '../contexts';
+
+import '../styles/globals.scss';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const swrConfig = {
   revalidateOnFocus: false,
 }
 
-const landingPages = ['Home', 'About', 'Faq', 'Reviews'];
+const landingPages = ['Home', 'About', 'Faq', 'Reviews', 'Program', 'Investor'];
 const notAvailableForAuth = ['Registration', 'Login', 'PasswordRecovery'];
 
 
@@ -27,7 +29,7 @@ function MyApp({ Component, pageProps }) {
 
     if (isCabinetPage && !getAccessToken()) logout();
     if (isNotAvailableForAuth && getAccessToken()) router.push('/cabinet/dashboard');
-  }, [])
+  }, [PageName])
   
   const isCabinetPage = router.asPath.includes('cabinet');
 

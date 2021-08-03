@@ -14,6 +14,12 @@ const Withdrawal = () => {
     const { register, handleSubmit, reset, formState: { errors }, setError, clearErrors } = useForm();
 
     const onSubmit = async data => {
+        clearErrors();
+
+        if (Number.isNaN(data.amount)) {
+            setError('amount', { type: 'number', message: 'Должно быть числом' });
+            return;
+        }
         try {
             const resp = await kyFetch.post('payments/withdraw', { json: data }).json();
             if (resp?.success) {
@@ -21,7 +27,11 @@ const Withdrawal = () => {
                 mutate('balance');
                 mutate('withdrawList');
             };
-        } catch (e) {}
+        } catch (e) {
+            const errorResp = await e.response?.json();
+            const errorMessage = errorResp?.message || 'Произошла какая-то ошбика, попробуйте позже';
+            setError('amount', { type: 'serverError', message: errorMessage })
+        }
     }
 
     const { data: withdrawList = [], error } = useSWR('withdrawList', async () => {
@@ -41,6 +51,9 @@ const Withdrawal = () => {
 
         return [];
     })
+
+    const isWithdrawExist = withdrawList?.length;
+    
     return (
         <div>
             <h1>Вывод средств</h1>
@@ -56,11 +69,13 @@ const Withdrawal = () => {
                             <BaseInput
                                 label="Сумма вывода:"
                                 placeholder="Введите сумму"
+                                error={errors?.amount?.message}
                                 {...register('amount', {
                                     required: {
                                         value: true,
                                         message: "Обязательное поле"
-                                    }
+                                    },
+                                    valueAsNumber: true,
                                 })}
                             />
                         </div>
@@ -68,6 +83,7 @@ const Withdrawal = () => {
                             <BaseInput
                                 label="Кошелек:"
                                 placeholder="Введите адрес кошелька"
+                                error={errors?.address?.message}
                                 {...register('address', {
                                     required: {
                                         value: true,
@@ -76,17 +92,10 @@ const Withdrawal = () => {
                                 })}
                             />
                         </div>
-                        {/* <div className="input">
-                            <p>Система:</p>
-                            <div className="select">
-                                <select>
-                                    <option value="junior">Junior Programm</option>
-                                    <option value="middle">Middle Programm</option>
-                                    <option value="senior">Senior Programm</option>
-                                </select>
-                            </div>
-                        </div>							 */}
                     </div>
+                    
+                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>Комиссия для вывода средств варьируется от 0.00015 BTC(~6 USD) до 0.00060 BTC(~24 USD) </div>
+
                     <button type="submit" className="button">Вывести средства</button>
                 </form>
             </div>
@@ -105,21 +114,27 @@ const Withdrawal = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {withdrawList.map(({ id, amount, date }) => (
-                            <tr key={id}>
-                                <td>{date}</td>
-                                <td>{amount} QU</td>
-                                <td>
-                                    <img src="img/qiwi.svg" alt="" />
-                                    Кошелек
-                                </td>
-                                <td>
-                                    <img src="img/berty.svg" alt="" />
-                                    BitCoin
-                                </td>
-                                <td className="green">Выполнено</td>
-                            </tr>
-                        ))}
+                        {isWithdrawExist ? 
+                            withdrawList?.map(({ id, amount, date }) => (
+                                <tr key={id}>
+                                    <td>{date}</td>
+                                    <td>{amount} QU</td>
+                                    <td>
+                                        <img src="img/qiwi.svg" alt="" />
+                                        Кошелек
+                                    </td>
+                                    <td>
+                                        <img src="img/berty.svg" alt="" />
+                                        BitCoin
+                                    </td>
+                                    <td className="green">Выполнено</td>
+                                </tr>
+                            )) : (
+                                <tr>
+                                    <td>Вывода средств не было</td>
+                                </tr>
+                            )
+                        }
                     </tbody>
                 </table>
             </div>

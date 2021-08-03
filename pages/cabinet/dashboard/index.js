@@ -8,6 +8,7 @@ import kyFetch from 'api';
 import Link from 'next/link';
 import BaseReferralLink from 'components/base/BaseReferralLink';
 import Big from 'big.js';
+import BaseUserStatusBlock from '../../../components/base/BaseUserStatusBlock';
 
 const Dashboard = () => {
     const [user] = useUserInfo();
@@ -47,7 +48,14 @@ const Dashboard = () => {
     const { lastActivity, registrationDate } = userData;
     const { id } = user || {};
 
-    const referralAndDepositeSum = Big(depositeIncome).plus(Big(referral)).toNumber();
+    let referralAndDepositeSum = 0;
+
+    try {
+        referralAndDepositeSum = Big(depositeIncome).plus(Big(referral)).toNumber();
+    } catch (e) {
+        referralAndDepositeSum = 0;
+    }
+    
     return (
         <div>
             <h1>Главная</h1>
@@ -57,66 +65,14 @@ const Dashboard = () => {
                 <p>Дата последней активности:&nbsp;<span className="purpur">{lastActivity}</span></p>
             </div>
 
-            <div className="status-block">
-                <div className="status-item left">
-                    <div className="status-title">
-                        <div className="img">
-                            <img src="img/status1.svg" alt="" />
-                        </div>
-                        <div className="text">
-                            <p>Ваш текущий статус:</p>
-                            <h3 className="purpur fz24">Консультант</h3>
-                        </div>
-                    </div>
-                    <p>
-                        Бонус от личных продаж:
-                        <span className="purpur fz24 block">5%</span>
-                    </p>
-                    <p>
-                        Личный оборот (вклад):
-                        <span className="purpur block">&gt; 500 QU</span>
-                    </p>
-                    <p>
-                        Оборот структуры:
-                        <span className="purpur block">X</span>
-                    </p>
-                </div>
-                <div className="status-item right">
-                    <div className="status-title">
-                        <div className="img opacity">
-                            <img src="img/status2.svg" alt="" />
-                        </div>
-                        <div className="text">
-                            <p>Для следующего статуса</p>
-                            <h4 className="purpur opacity"><strong>Старший консультант</strong></h4>
-                            <p>необходимо:</p>
-                        </div>
-                    </div>
-                    <div className="status-body-wrap">
-                        <p>
-                            Личный оборот:
-                            <span className="purpur block">&gt; 500 QU</span>
-                        </p>
-                        <p>
-                            Осталось:
-                            <span className="red block">500 QU</span>
-                        </p>
-                        <p>
-                            Оборот структуры:
-                            <span className="purpur block">X</span>
-                        </p>
-                        <p>
-                            Оборот структуры:
-                            <span className="green block">Выполнено</span>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            <BaseUserStatusBlock />
 
             <div className="money-wrap">
                 <div className="money-item">
                     <div className="money-item-title">
-                        <img src="img/money1.svg" alt="" />
+                        <div style={{ marginRight: '10px' }}>
+                            <Image src="/static/img/money1.svg" alt="" width="34" height="34" />
+                        </div>
                         <span className="purpur opacity">Ваш баланс</span>
                     </div>
                     <p className="purpur fz24">{showAmount(balance)} QU</p>
@@ -124,7 +80,9 @@ const Dashboard = () => {
                 </div>
                 <div className="money-item">
                     <div className="money-item-title">
-                        <img src="img/money2.svg" alt="" />
+                        <div style={{ marginRight: '10px' }}>
+                            <Image src="/static/img/money2.svg" alt="" width="34" height="34" />
+                        </div>
                         <span className="purpur opacity">Инвестировано:</span>
                     </div>
                     <p className="purpur fz24">{showAmount(invested)} QU</p>
@@ -132,7 +90,9 @@ const Dashboard = () => {
                 </div>
                 <div className="money-item">
                     <div className="money-item-title">
-                        <img src="img/money3.svg" alt="" />
+                        <div style={{ marginRight: '10px' }}>
+                            <Image src="/static/img/money3.svg" alt="" width="34" height="34" />
+                        </div>
                         <span className="purpur opacity">Выведено средств:</span>
                     </div>
                     <p className="purpur fz24">{showAmount(withdrawn)} QU</p>
@@ -143,7 +103,9 @@ const Dashboard = () => {
                 </div>
                 <div className="money-item">
                     <div className="money-item-title">
-                        <img src="img/money5.svg" alt="" />
+                        <div style={{ marginRight: '10px' }}>
+                            <Image src="/static/img/money5.svg" alt="" width="34" height="34" />
+                        </div>
                         <span className="purpur opacity">Реферальные:</span>
                     </div>
                     <p className="purpur fz24">{showAmount(referral)} QU</p>

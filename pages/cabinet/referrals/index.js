@@ -5,6 +5,7 @@ import kyFetch from 'api';
 import dayjs from 'dayjs';
 import { copyTextToClipboard, showAmount } from 'utils';
 import BaseReferralLink from '../../../components/base/BaseReferralLink';
+import BaseUserStatusBlock from '../../../components/base/BaseUserStatusBlock';
 
 const Referrals = () => {
 	const { data: topReferrals = [], error } = useSWR('referralTop', async () => {
@@ -39,61 +40,7 @@ const Referrals = () => {
 			<div>
 					<h1>Рефералы</h1>
 	
-					<div className="status-block margin">
-						<div className="status-item left">
-							<div className="status-title">
-								<div className="img">
-									<img src="img/status1.svg" alt="" />
-								</div>
-								<div className="text">
-									<p>Ваш текущий статус:</p>
-									<h3 className="purpur fz24">Консультант</h3>
-								</div>
-							</div>
-							<p>
-								Бонус от личных продаж:
-								<span className="purpur fz24 block">5%</span>
-							</p>
-							<p>
-								Личный оборот (вклад):
-								<span className="purpur block">> 500 QU</span>
-							</p>
-							<p>
-								Оборот структуры:
-								<span className="purpur block">X</span>
-							</p>
-						</div>
-						<div className="status-item right">
-							<div className="status-title">
-								<div className="img opacity">
-									<img src="img/status2.svg" alt="" />
-								</div>
-								<div className="text">
-									<p>Для следующего статуса</p>
-									<h4 className="purpur opacity"><strong>Старший консультант</strong></h4>
-									<p>необходимо:</p>
-								</div>
-							</div>
-							<div className="status-body-wrap">
-								<p>
-									Личный оборот:
-									<span className="purpur block">> 500 QU</span>
-								</p>
-								<p>
-									Осталось:
-									<span className="red block">500 QU</span>
-								</p>
-								<p>
-									Оборот структуры:
-									<span className="purpur block">X</span>
-								</p>
-								<p>
-									Оборот структуры:
-									<span className="green block">Выполнено</span>
-								</p>
-							</div>
-						</div>
-					</div>
+					<BaseUserStatusBlock />
 	
 					<h3>Топ 5 лидеров</h3>
 	
@@ -128,10 +75,10 @@ const Referrals = () => {
 									<td>Премия</td>
 									{/* <td>Система подсчета бонусного оборота</td> */}
 								</tr>
-								{referralAwards.map(({ id, award, date }) => (
+								{referralAwards.map(({ id, amount, date }) => (
 									<tr key={id}>
 										<td>{dayjs(date).format('DD.MM.YYYY')}</td>
-										<td>{award} QU</td>
+										<td>{amount} QU</td>
 									</tr>
 								))}
 							</tbody>

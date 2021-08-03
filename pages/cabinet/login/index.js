@@ -77,9 +77,9 @@ const Login = () => {
                     <div>
                         <Link href="/cabinet/registration"><a className="reg-link">Создать аккаунт</a></Link>
                     </div>
-                    <div>
+                    {/* <div>
                         <Link href="/cabinet/password-recovery"><a className="reg-link">Забыли логин или пароль?</a></Link>
-                    </div>
+                    </div> */}
                     
                 </form>
             </div>

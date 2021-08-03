@@ -75,12 +75,13 @@ const Replenishment = () => {
                             <BaseInput
                                 label="Сумма пополнения:"
                                 placeholder="Введите сумму"
-                                type="number"
+                                error={errors?.amount?.message}
                                 {...register('amount', {
                                     required: {
                                         value: true,
                                         message: "Обязательное поле"
-                                    }
+                                    },
+                                    valueAsNumber: true,
                                 })}
                             />
                         </div>
@@ -93,12 +94,15 @@ const Replenishment = () => {
                             </div>
                         </div>							
                     </div>
+                    
+                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>Комиссия для пополнения составляет 0.00005 BTC ~ 2 USD</div>
+
                     <button type="submit" className="button">Пополнить</button>
                     {qrCode && (
                         <div style={{ margin: '10px 0' }}>
                             <div style={{ marginBottom: '15px', fontSize: '18px' }}>
                                 {/* Добавиьт конкретную сумму */}
-                                Пополните данный кошелек на сумму {amount} и ожидайте зачисление, это может занять некоторое время. <span style={{ fontWeight: 'bold', fontSize: '22px' }}>{qrCode}</span>
+                                Пополните данный кошелек на сумму {amount} BTC и ожидайте зачисление, это может занять некоторое время. <span style={{ fontWeight: 'bold', fontSize: '22px' }}>{qrCode}</span>
                             </div>
                             <div><QRCode value={qrCode} /></div>
                             <div>

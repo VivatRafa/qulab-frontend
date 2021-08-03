@@ -5,57 +5,46 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react';
 import Landing from '../layouts/landing';
 
+import whatImg from '../public/static/img/what-img.svg';
+import how1 from '../public/static/img/how1.svg';
+import how2 from '../public/static/img/how2.svg';
+import how3 from '../public/static/img/how3.svg';
+import how4 from '../public/static/img/how4.svg';
+import plansLeft1 from '../public/static/img/plans-left1.svg';
+import plansLeft2 from '../public/static/img/plans-left2.svg';
+import referalPrev from '../public/static/img/referal-prev.svg';
+import statusIcon1 from '../public/static/img/status-icon1.svg';
+import stars1 from '../public/static/img/stars1.svg';
+import stars2 from '../public/static/img/stars2.svg';
+import statusIcon2 from '../public/static/img/status-icon2.svg';
+import stars3 from '../public/static/img/stars3.svg';
+import statusIcon3 from '../public/static/img/status-icon3.svg';
+import stars4 from '../public/static/img/stars4.svg';
+import statusIcon4 from '../public/static/img/status-icon4.svg';
+import stars5 from '../public/static/img/stars5.svg';
+import statusIcon5 from '../public/static/img/status-icon5.svg';
+import stars6 from '../public/static/img/stars6.svg';
+import statusIcon6 from '../public/static/img/status-icon6.svg';
+import stars7 from '../public/static/img/stars7.svg';
+import statusIcon7 from '../public/static/img/status-icon7.svg';
+import stars8 from '../public/static/img/stars8.svg';
+import statusIcon8 from '../public/static/img/status-icon8.svg';
+import stars9 from '../public/static/img/stars9.svg';
+import statusIcon9 from '../public/static/img/status-icon9.svg';
+import stars10 from '../public/static/img/stars10.svg';
+import statusIcon10 from '../public/static/img/status-icon10.svg';
+import stars11 from '../public/static/img/stars11.svg';
+import referalNext from '../public/static/img/referal-next.svg';
+import advan1 from '../public/static/img/advan1.svg';
+import advan2 from '../public/static/img/advan2.svg';
+import advan3 from '../public/static/img/advan3.svg';
+import advan4 from '../public/static/img/advan4.svg';
+import BaseRange from '../components/base/BaseRange';
+import BaseDepositeCalculator from '../components/base/BaseDepositeCalculator';
+import BaseSlider from '../components/base/BaseSlider';
+
 const Home = () => (
     <>
-      <header>
-        <img src="img/header-circle.svg" alt="" className="header-circle" />
-        <section className="top-line-section">
-          <div className="wrapper">
-            <div className="top-line-wrap">
-              <div className="top-left">
-                <div className="burger">
-                  <div className="line" />
-                  <div className="line" />
-                  <div className="line" />
-                </div>
-                <a href="index.html" className="logo">
-                  <img src="img/logo.svg" alt="" />
-                  <span>QuLab</span>
-                </a>
-              </div>				
-              <ul className="top-menu">
-                <li><a href="about.html"><span>О нас</span></a></li>
-                <li><a href="investoru.html"><span>Инвестору</span></a></li>
-                <li><a href="program.html"><span>Премиальная программа</span></a></li>
-                <li><a href="reviews.html"><span>Отзывы</span></a></li>
-                <li><a href="faq.html"><span>FAQ</span></a></li>
-              </ul>
-              <div className="top-buttons">
-                <a href="login.html"><span>Войти</span></a>
-                <a href="reg.html" className="button"><span>Регистрация</span></a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="wrapper">
-          <div className="header-block">
-            <div className="header-text">
-              <h1>Пассивный доход вместе с QuLab</h1>
-              <p>Зарегистрируйтесь и получите доступ <br />ко всем возможностям Клуба!</p>
-
-              <div className="header-buttons">
-                <a href="#" className="button"><span>Инвестировать</span></a>
-                <a href="#" className="button1"><span>Рассчитать прибыль</span></a>
-              </div>
-            </div>
-            <div className="header-img">
-              <img src="img/header-img.svg" alt="" />
-            </div>
-          </div>
-        </div>
-      </header>
-
       <section className="what-section">
         <div className="wrapper">
           <h2>Что такое QuLab?</h2>
@@ -63,7 +52,7 @@ const Home = () => (
           <div className="what-wrap">
             <div className="what-left">
               <div className="img">
-                <img src="img/what-img.svg" alt="" />
+                <Image src={whatImg} width="494" height="272" />
               </div>
               <div className="what-left-button">
                 <a href="#" className="button"><span>Присоединиться</span></a>
@@ -115,7 +104,7 @@ const Home = () => (
 
           <div className="how-wrap">
             <div className="img">
-              <img src="img/how1.svg" alt="" />
+              <Image src={how1} width="390" height="516" />
             </div>
             <div className="text">
               <h3>Регистрация аккаунта</h3>
@@ -130,7 +119,7 @@ const Home = () => (
           </div>
           <div className="how-wrap">
             <div className="img">
-              <img src="img/how2.svg" alt="" />
+              <Image src={how2} width="316" height="340" />
             </div>
             <div className="text">
               <h3>Открытие депозита</h3>
@@ -143,7 +132,7 @@ const Home = () => (
           </div>
           <div className="how-wrap">
             <div className="img">
-              <img src="img/how3.svg" alt="" />
+              <Image src={how3} width="445" height="437" />
             </div>
             <div className="text">
               <h3>Как получить прибыль</h3>
@@ -157,7 +146,7 @@ const Home = () => (
           </div>
           <div className="how-wrap">
             <div className="img">
-              <img src="img/how4.svg" alt="" />
+              <Image src={how4} width="339" height="344" />
             </div>
             <div className="text">
               <h3>Вывод средств</h3>
@@ -175,80 +164,7 @@ const Home = () => (
         <div className="wrapper">
           <h2>Тарифные планы</h2>
 
-          <div className="plans-big-block">
-            <div className="plans-top">
-              <div className="left">
-                <img src="img/plans-left1.svg" alt="" />
-                <img src="img/plans-left2.svg" alt="" />
-                <p>Junior Program</p>
-              </div>
-              <div className="top">
-                <a href="#" className="active">Junior Program</a>
-                <a href="#">Middle Program</a>
-                <a href="#">Senior Program</a>
-              </div>
-              <div className="right">
-                <div className="right-item active">
-                  <div className="percent">
-                    <p>0.86 <span>%</span></p>
-                    <p>в день</p>
-                  </div>
-                  <p>Сумма депозита: <span>от 99.00 QU</span></p>
-                  <p>Срок: <span>232 дня</span></p>
-                </div>
-                <div className="right-item">
-                  <div className="percent">
-                    <p>0.96 <span>%</span></p>
-                    <p>в день</p>
-                  </div>
-                  <p>Сумма депозита: <span>от 199.00 QU</span></p>
-                  <p>Срок: <span>242 дня</span></p>
-                </div>
-                <div className="right-item">
-                  <div className="percent">
-                    <p>1.06 <span>%</span></p>
-                    <p>в день</p>
-                  </div>
-                  <p>Сумма депозита: <span>от 299.00 QU</span></p>
-                  <p>Срок: <span>252 дня</span></p>
-                </div>
-              </div>
-            </div>
-            <div className="plans-bottom">
-              <div className="plans-bottom-left">
-                <div className="plans-bottom-item">
-                  <h5>Сумма инвестривания в QU</h5>
-                  <input type="text" naame="qu" value="10000" />
-                  <input type="range" min="0" max="100000" step="1000" value="10000" />
-                  <div className="max">100 000</div>
-                </div>
-                <div className="plans-bottom-item">
-                  <h5>Сумма в BTC</h5>
-                  <input type="text" naame="btc" value="0.5" />
-                  <input type="range" min="0" max="4.232" step="0.01" value="1" />
-                  <div className="max">4.232</div>
-                </div>
-                <div className="plans-bottom-button">
-                  <a href="#" className="button">Инвестировать</a>
-                </div>
-              </div>
-              <div className="plans-bottom-right">
-                <div className="button">
-                  <a href="#" className="button">Инвестировать</a>
-                </div>
-                <div className="text">
-                  <div className="sum">
-                    <h5>Итоговая сумма:</h5>
-                    <p>329.23 <span>QU</span></p>
-                  </div>
-                  <div className="percents">
-                    <h5>В процентах:</h5>
-                    <p>204.13 %</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <BaseDepositeCalculator />
         </div>
       </section>
 
@@ -266,16 +182,16 @@ const Home = () => (
               </div>
             </div>
             <div className="referal-right">
-              <img src="img/referal-prev.svg" alt="" className="referal-prev" />
+              <Image src={referalPrev} width="100" height="100" />
               <div className="before" />
 
-              <div className="referal-slider">
+              {/* <div className="referal-slider">
                 <div className="status-item">
                   <div className="icon">
-                    <img src="img/status-icon1.svg" alt="" />
+                    <Image src={statusIcon1} width="100" height="100" />
                   </div>
                   <div className="stars">
-                    <img src="img/stars1.svg" alt="" />
+                    <Image src={stars1} width="100" height="100" />
                   </div>
                   <h4>Консультант</h4>
                   <div className="bonus">
@@ -288,190 +204,13 @@ const Home = () => (
                   <p>Личный оборот (вклад): <span>&gt; 500 QU</span></p>
                   <p>Оборот структуры: <span>X</span></p>
                 </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon1.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars2.svg" alt="" />
-                  </div>
-                  <h4>Старший консультант</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>6<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 1000 QU</span></p>
-                  <p>Оборот структуры: <span>X</span></p>
-                </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon2.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars3.svg" alt="" />
-                  </div>
-                  <h4>Лидер</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>7<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 5000 QU</span></p>
-                  <p>Оборот структуры: <span>1 линия &gt; 2500 QU</span></p>
-                </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon3.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars4.svg" alt="" />
-                  </div>
-                  <h4>Вице директор</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>8<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 5000 QU</span></p>
-                  <p>Оборот структуры: <span>1-2 линии &gt; 20 000 QU</span></p>
-                </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon4.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars5.svg" alt="" />
-                  </div>
-                  <h4>Кандидат директор</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>9<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 5000 QU</span></p>
-                  <p>Оборот структуры: <span>1-3 линии &gt; 50 000 QU</span></p>
-                </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon5.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars6.svg" alt="" />
-                  </div>
-                  <h4>Директор</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>10<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 5000 QU</span></p>
-                  <p>Оборот структуры: <span>1-4 линии &gt; 200 000 QU</span></p>
-                </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon6.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars7.svg" alt="" />
-                  </div>
-                  <h4>Серебряный директор</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>11<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 5000 QU</span></p>
-                  <p>Оборот структуры: <span>1-5 линии &gt; 500 000 QU</span></p>
-                </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon7.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars8.svg" alt="" />
-                  </div>
-                  <h4>Золотой директор</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>12<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 5000 QU</span></p>
-                  <p>Оборот структуры: <span>1-6 линии &gt; 1 000 000 QU</span></p>
-                </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon8.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars9.svg" alt="" />
-                  </div>
-                  <h4>Брильянтовый директор</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>13<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 5000 QU</span></p>
-                  <p>Оборот структуры: <span>1-7 линии &gt; 3 000 000 QU</span></p>
-                </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon9.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars10.svg" alt="" />
-                  </div>
-                  <h4>Региональный партнер</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>14<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 5000 QU</span></p>
-                  <p>Оборот структуры: <span>1-8 линии &gt; 10 000 000 QU</span></p>
-                </div>
-                <div className="status-item">
-                  <div className="icon">
-                    <img src="img/status-icon10.svg" alt="" />
-                  </div>
-                  <div className="stars">
-                    <img src="img/stars11.svg" alt="" />
-                  </div>
-                  <h4>Международный партнер</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>15<span>%</span></p>
-                      <p>от личных продаж</p>
-                    </div>
-                  </div>
-                  <p>Личный оборот (вклад): <span>&gt; 5000 QU</span></p>
-                  <p>Оборот структуры: <span>1-9 линии &gt; 30 000 000 QU</span></p>
-                </div>
-              </div>
+
+              </div> */}
+
+              <BaseSlider />
 
               <div className="after" />
-              <img src="img/referal-next.svg" alt="" className="referal-next" />
+              <Image src={referalNext} width="100" height="100" />
             </div>
           </div>
         </div>
@@ -484,7 +223,7 @@ const Home = () => (
           <div className="advan-wrap">
             <div className="advan-item">
               <div className="img">
-                <img src="img/advan1.svg" alt="" />
+                <Image src={advan1} width="100" height="100" />
               </div>
               <div className="text">
                 <h3>Почему QuLab</h3>
@@ -493,7 +232,7 @@ const Home = () => (
             </div>
             <div className="advan-item">
               <div className="img">
-                <img src="img/advan2.svg" alt="" />
+                <Image src={advan2} width="100" height="100" />
               </div>
               <div className="text">
                 <h3>Безопасность</h3>
@@ -502,7 +241,7 @@ const Home = () => (
             </div>
             <div className="advan-item">
               <div className="img">
-                <img src="img/advan3.svg" alt="" />
+                <Image src={advan3} width="100" height="100" />
               </div>
               <div className="text">
                 <h3>Стабильность</h3>
@@ -511,28 +250,12 @@ const Home = () => (
             </div>
             <div className="advan-item">
               <div className="img">
-                <img src="img/advan4.svg" alt="" />
+                <Image src={advan4} width="100" height="100" />
               </div>
               <div className="text">
                 <h3>Выгодные условия</h3>
                 <p>Удобные и надёжные способы пополнения и вывода. Быстрая обработка данных. Отсутсвие скрытых и дополнительных комиссий. Одна из лучших реферальных систем, систем поощрения и бонусов.</p>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="logos-section">
-        <div className="wrapper">
-          <div className="logos-wrap">
-            <div className="logos-item">
-              <img src="img/logos1.png" alt="" />
-            </div>
-            <div className="logos-item">
-              <img src="img/logos2.png" alt="" />
-            </div>
-            <div className="logos-item">
-              <img src="img/logos3.png" alt="" />
             </div>
           </div>
         </div>

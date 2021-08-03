@@ -15,8 +15,6 @@ const Structure = () => {
         return resp;
     })
 
-    const { first, second, third, fourth } = structure || {};
-
     return (
         <div>
             <h1>Структура</h1>
@@ -26,7 +24,7 @@ const Structure = () => {
                     <img src="img/money5.svg" alt=""/>
                     Мои инвесторы:
                 </div>
-                {Object.keys(structure).map((refLine, i) => (
+                {Object.keys(structure).filter(refLine => structure[refLine]?.length).map((refLine, i) => (
                     <div className={`structure-item ${isOpen[refLine] ? 'active' : ''}`}>
                         {/* eslint-disable */}
                         <p onClick={() => setIsOpen({ ...isOpen, [refLine]: !isOpen[refLine] })} className="purpur">Линия {i + 1}</p>
@@ -45,64 +43,6 @@ const Structure = () => {
                         </div>
                     </div>
                 ))}
-                {/* <div className="structure-item">
-                    <p className="purpur">Линия 1</p>
-                    <div className="structure-hidden">
-                        {first?.map(({ id, login, invested }) => (
-                            <div className="investor" key={id}>
-                                <p className="purpur">
-                                    <span className="structure-icon">А</span>
-                                    {login}
-                                </p>
-                                <p className="purpur">+7 (***) ***-**-14</p>
-                                <p>id:&nbsp;<span className="purpur">{id}</span></p>
-                                <p>Инвестировано:&nbsp;<span className="purpur">{invested} QU</span></p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-                <div className="structure-item active">
-                    <p className="purpur">Линия 2</p>
-                    <div className="structure-hidden">
-                        <div className="investor">
-                            <p className="purpur">
-                                <span className="structure-icon">А</span>
-                                Александр ********
-                            </p>
-                            <p className="purpur">+7 (***) ***-**-14</p>
-                            <p>id:&nbsp;<span className="purpur">7775719</span></p>
-                            <p>Инвестировано:&nbsp;<span className="purpur">3.63 QU</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div className="structure-item">
-                    <p className="purpur">Линия 3</p>
-                    <div className="structure-hidden">
-                        <div className="investor">
-                            <p className="purpur">
-                                <span className="structure-icon">А</span>
-                                Александр ********
-                            </p>
-                            <p className="purpur">+7 (***) ***-**-14</p>
-                            <p>id:&nbsp;<span className="purpur">7775719</span></p>
-                            <p>Инвестировано:&nbsp;<span className="purpur">3.63 QU</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div className="structure-item">
-                    <p className="purpur">Линия 4</p>
-                    <div className="structure-hidden">
-                        <div className="investor">
-                            <p className="purpur">
-                                <span className="structure-icon">А</span>
-                                Александр ********
-                            </p>
-                            <p className="purpur">+7 (***) ***-**-14</p>
-                            <p>id:&nbsp;<span className="purpur">7775719</span></p>
-                            <p>Инвестировано:&nbsp;<span className="purpur">3.63 QU</span></p>
-                        </div>
-                    </div>
-                </div> */}
             </div>
         </div>
     )
