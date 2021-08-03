@@ -29,21 +29,21 @@ const defaultFormValue = {
 const Deposite = () => {
     const { register, handleSubmit, reset, formState: { errors }, setError, clearErrors } = useForm();
     const onSubmit = async data => {
+        clearErrors();
 
-        const newData = {
-            ...data,
-            amount: Number(data.amount),
+        if (Number.isNaN(data.amount)) {
+            setError('amount', { type: 'number', message: 'Должно быть числом' });
+            return;
         }
+        
         try {
-            const resp = await kyFetch.post('deposite', { json: newData }).json();
+            const resp = await kyFetch.post('deposite', { json: data }).json();
             if (resp?.success) {
                 reset(defaultFormValue);
                 mutate('balance');
                 mutate('depositeList');
             };
-        } catch (e) {
-            
-        }
+        } catch (e) {}
     }
     return (
         <div>

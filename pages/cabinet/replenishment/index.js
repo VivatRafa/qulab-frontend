@@ -24,7 +24,13 @@ const Replenishment = () => {
     const [amount, setAmount] = useState(null)
 
     const onSubmit = async data => {
+        clearErrors();
         setAmount(data.amount);
+
+        if (Number.isNaN(data.amount)) {
+            setError('amount', { type: 'number', message: 'Должно быть числом' });
+            return;
+        }
 
         try {
             const resp = await kyFetch.post('payments/replenishment', { json: data }).json();

@@ -20,6 +20,7 @@ const Withdrawal = () => {
             setError('amount', { type: 'number', message: 'Должно быть числом' });
             return;
         }
+
         try {
             const resp = await kyFetch.post('payments/withdraw', { json: data }).json();
             if (resp?.success) {
