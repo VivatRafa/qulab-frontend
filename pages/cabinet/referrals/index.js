@@ -93,28 +93,28 @@ const Referrals = () => {
 						</div>
 						<div className="money-item">
 							<div className="money-item-title">
-								<img src="img/money6.svg" alt="" />
+								<Image width="40" height="40" src="/static/img/money6.svg" alt="" />
 								<span className="purpur opacity">Доход с рефералов:</span>
 							</div>
 							<p className="purpur fz24">{showAmount(balanceData.referral_award)} QU</p>
 						</div>
 						<div className="money-item">
 							<div className="money-item-title">
-								<img src="img/money5.svg" alt="" />
+								<Image width="40" height="40" src="/static/img/money5.svg" alt="" />
 								<span className="purpur opacity">Всего рефералов:</span>
 							</div>
 							<p className="purpur fz24">{referralCounts}</p>
 						</div>
 						<div className="money-item">
 							<div className="money-item-title">
-								<img src="img/money7.svg" alt="" />
+								<Image width="40" height="40" src="/static/img/money7.svg" alt="" />
 								<span className="purpur opacity">Активных рефералов</span>
 							</div>
 							<p className="purpur fz24">{activeReferralCounts}</p>
 						</div>
 					</div>
 	
-					<p className="inviter margin">Ваш пригласитель: <span className="purpur">user1</span></p>
+					{/* <p className="inviter margin">Ваш пригласитель: <span className="purpur">user1</span></p> */}
 	
 					<h3>Данные по реферальной системе</h3>
 	

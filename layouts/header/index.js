@@ -8,9 +8,6 @@ import { showAmount } from 'utils';
 import { logout } from 'utils/auth';
 import { GlobalContext } from 'contexts';
 
-// Images
-import logo from 'public/static/img/logo.svg';
-
 const Header = ({ isLanding }) => {
     const [state, dispatch] = React.useContext(GlobalContext);
     const [user] = useUserInfo();
@@ -26,7 +23,7 @@ const Header = ({ isLanding }) => {
     const { balance } = balanceData;
     return (
         <>
-            {isLanding && <img src="img/header-circle.svg" alt="" className="header-circle"/>}
+            {/* {isLanding && <Image width="40" height="40" src="/static/img/header-circle.svg" alt="" className="header-circle"/>} */}
             <section className="top-line-section">
                 <div className="wrapper">
                     <div className="top-line-wrap">
@@ -38,7 +35,7 @@ const Header = ({ isLanding }) => {
                         <div className="top-left">
                             <Link href="/">
                                 <a className="logo">
-                                    <Image src={logo} width="40" height="40" alt="" />
+                                    <Image src="/static/img/logo.svg" width="40" height="40" alt="" />
                                     <span>QuLab</span>
                                 </a>
                             </Link>

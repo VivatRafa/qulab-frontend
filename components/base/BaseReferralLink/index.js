@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { copyTextToClipboard } from 'utils';
 import { useUserInfo } from 'hooks';
+import Image from "next/image";
 
 const BaseReferralLink = () => {
     const [user] = useUserInfo();
@@ -15,7 +16,7 @@ const BaseReferralLink = () => {
     return (
         <div>
             <div className="money-item-title">
-                <img src="/static/img/money4.svg" alt="" width="36" height="36" />
+                <Image src="/static/img/money4.svg" alt="" width="36" height="36" />
                 <span className="purpur opacity">Реферальная ссылка</span>
             </div>
             <div className="referal-link">{refLink}</div>

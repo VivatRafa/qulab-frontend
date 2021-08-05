@@ -40,5 +40,7 @@ const PasswordRecovery = () => {
 }
 
 PasswordRecovery.Layout = AuthLayout;
+PasswordRecovery.needAuth = false;
+PasswordRecovery.PageName = 'PasswordRecovery';
 
 export default PasswordRecovery

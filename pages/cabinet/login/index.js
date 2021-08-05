@@ -37,7 +37,7 @@ const Login = () => {
                     <div className="reg-title">
                         <h3>Войти</h3>
                         <p>
-                            <img src="img/reg-logo.svg" alt="" />
+                            <Image src="/static/img/reg-logo.svg" width="40" height="40" alt="" />
                             <span>QuLab</span>
                         </p>
                     </div>
@@ -88,5 +88,8 @@ const Login = () => {
 }
 
 Login.Layout = AuthLayout;
+Login.needAuth = false;
+
+Login.PageName = 'Login';
 
 export default Login

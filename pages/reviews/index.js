@@ -6,5 +6,8 @@ const Reviews = () => {
 }
 
 Reviews.Layout = Landing;
+Reviews.needAuth = false;
+
+Reviews.PageName = 'Reviews';
 
 export default Reviews;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useSWR, { mutate } from 'swr';
 import dayjs from 'dayjs';
 import QRCode from "react-qr-code";
@@ -11,6 +11,7 @@ import payments from 'config/payments';
 // images
 import operation1 from 'public/static/img/operation1.svg';
 import btcImg from 'public/static/img/btc.svg';
+import Big from 'big.js';
 
 const defaultFormValue = {
     amount: null,
@@ -19,13 +20,12 @@ const defaultFormValue = {
 const statusClasses = ['green', 'yellow', 'red'];
 
 const Replenishment = () => {    
-    const { register, handleSubmit, getValues, reset, formState: { errors }, setError, clearErrors } = useForm();
+    const { register, handleSubmit, getValues, watch, reset, formState: { errors }, setError, clearErrors } = useForm();
     const [qrCode, setQrCode] = useState(null);
-    const [amount, setAmount] = useState(null)
+    const amount = watch('amount', 0);
 
     const onSubmit = async data => {
         clearErrors();
-        setAmount(data.amount);
 
         if (Number.isNaN(data.amount)) {
             setError('amount', { type: 'number', message: 'Должно быть числом' });
@@ -62,6 +62,17 @@ const Replenishment = () => {
         return [];
     })
 
+    const { data: dollarRate = 0 } = useSWR('dollarRate', async () => {
+        const resp = await kyFetch.get('payments/getDollarRate').json();
+        
+        if (resp) {
+            const { dollarRate } = resp;
+            return dollarRate;
+        }
+
+        return 0;
+    })
+
     const isReplenishmentListExist = replenishmentList.length;
 
     return (
@@ -80,7 +91,7 @@ const Replenishment = () => {
                         <div className="input">
                             <BaseInput
                                 label="Сумма пополнения:"
-                                placeholder="Введите сумму"
+                                placeholder="Введите сумму в USD"
                                 error={errors?.amount?.message}
                                 {...register('amount', {
                                     required: {
@@ -100,8 +111,10 @@ const Replenishment = () => {
                             </div>
                         </div>							
                     </div>
-                    
-                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>Комиссия для пополнения составляет 0.00005 BTC ~ 2 USD</div>
+                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>BTC: 
+                        {!!dollarRate && !!amount ? Big(dollarRate).times(Big(amount)).toNumber() : 0}
+                    </div>
+                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>Комиссия для пополнения составляет 0.000072 BTC</div>
 
                     <button type="submit" className="button">Пополнить</button>
                     {qrCode && (

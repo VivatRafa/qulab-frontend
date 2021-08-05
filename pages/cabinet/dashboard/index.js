@@ -8,7 +8,7 @@ import kyFetch from 'api';
 import Link from 'next/link';
 import BaseReferralLink from 'components/base/BaseReferralLink';
 import Big from 'big.js';
-import BaseUserStatusBlock from '../../../components/base/BaseUserStatusBlock';
+import BaseUserStatusBlock from 'components/base/BaseUserStatusBlock';
 
 const Dashboard = () => {
     const [user] = useUserInfo();
@@ -20,7 +20,7 @@ const Dashboard = () => {
         const { last_aсtivity, registration_date } = resp;
         const lastActivity = dayjs(last_aсtivity).format('DD.MM.YYYY');
         const registrationDate = dayjs(registration_date).format('DD.MM.YYYY HH:mm');
-        return { lastActivity, registrationDate };
+        return { ...resp, lastActivity, registrationDate };
     })
 
     const { data: balanceData = {}, error } = useSWR('balance', async () => {

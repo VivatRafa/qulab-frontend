@@ -13,16 +13,13 @@ const Program = () => {
                         <div className="status-prev">
                             <Image src="/static/img/referal-prev.svg" alt="" className="status-prev" width="40" height="40" />
                         </div>
-                        {/* <img src="img/referal-prev.svg" alt="" className="status-prev" /> */}
 
                         <div className="status-wrap program">
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon1.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon1.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars1.svg" alt="" /> */}
                                     <Image src="/static/img/stars1.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Консультант</h4>
@@ -38,11 +35,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon1.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon1.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars2.svg" alt="" /> */}
                                     <Image src="/static/img/stars2.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Старший консультант</h4>
@@ -58,11 +53,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon2.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon2.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars3.svg" alt="" /> */}
                                     <Image src="/static/img/stars3.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Лидер</h4>
@@ -78,11 +71,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon3.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon3.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars4.svg" alt="" /> */}
                                     <Image src="/static/img/stars4.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Вице директор</h4>
@@ -98,11 +89,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon4.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon4.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars5.svg" alt="" /> */}
                                     <Image src="/static/img/stars5.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Кандидат директор</h4>
@@ -118,11 +107,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon5.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon5.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars6.svg" alt="" /> */}
                                     <Image src="/static/img/stars6.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Директор</h4>
@@ -138,11 +125,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon6.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon6.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars7.svg" alt="" /> */}
                                     <Image src="/static/img/stars7.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Серебряный директор</h4>
@@ -158,11 +143,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon7.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon7.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars8.svg" alt="" /> */}
                                     <Image src="/static/img/stars8.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Золотой директор</h4>
@@ -178,11 +161,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon8.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon8.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars9.svg" alt="" /> */}
                                     <Image src="/static/img/stars9.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Брильянтовый директор</h4>
@@ -198,11 +179,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon9.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon9.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars10.svg" alt="" /> */}
                                     <Image src="/static/img/stars10.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Региональный партнер</h4>
@@ -218,11 +197,9 @@ const Program = () => {
                             </div>
                             <div className="status-item">
                                 <div className="icon">
-                                    {/* <img src="img/status-icon10.svg" alt="" /> */}
                                     <Image src="/static/img/status-icon10.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="stars">
-                                    {/* <img src="img/stars11.svg" alt="" /> */}
                                     <Image src="/static/img/stars11.svg" alt="" width="300" height="23" />
                                 </div>
                                 <h4>Международный партнер</h4>
@@ -238,7 +215,6 @@ const Program = () => {
                             </div>
                         </div>
 
-                        {/* <img src="img/referal-next.svg" alt="" className="status-next" /> */}
                         <div className="status-next">
                             <Image src="/static/img/referal-next.svg" alt="" className="status-next" width="40" height="40" />
                         </div>
@@ -304,7 +280,6 @@ const Program = () => {
 
                             <div className="program-how-right">
                                 <div className="img">
-                                    {/* <img src="img/program-how-right1.svg" alt="" /> */}
                                     <Image src="/static/img/program-how-right1.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="text">
@@ -314,7 +289,6 @@ const Program = () => {
                             </div>
                             <div className="program-how-right">
                                 <div className="img">
-                                    {/* <img src="img/program-how-right2.svg" alt="" /> */}
                                     <Image src="/static/img/program-how-right2.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="text">
@@ -324,7 +298,6 @@ const Program = () => {
                             </div>
                             <div className="program-how-right">
                                 <div className="img">
-                                    {/* <img src="img/program-how-right1.svg" alt="" /> */}
                                     <Image src="/static/img/program-how-right1.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="text">
@@ -334,7 +307,6 @@ const Program = () => {
                             </div>
                             <div className="program-how-right">
                                 <div className="img">
-                                    {/* <img src="img/program-how-right3.svg" alt="" /> */}
                                     <Image src="/static/img/program-how-right3.svg" alt="" width="40" height="40" />
                                 </div>
                                 <div className="text">
@@ -474,7 +446,7 @@ const Program = () => {
                 </div>
             </section>
 
-            <section className="program-text-section">
+            <section id="referral" className="program-text-section">
                 <div className="wrapper">
                     <h2>Реферальная программа</h2>
 
@@ -592,5 +564,8 @@ const Program = () => {
 }
 
 Program.Layout = Landing;
+Program.needAuth = false;
+
+Program.PageName = 'Program';
 
 export default Program;

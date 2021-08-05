@@ -1,5 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
+import { getAccessToken } from '../../utils/auth';
 
 const Footer = () => (
         <footer>
@@ -9,23 +11,51 @@ const Footer = () => (
                         <div className="footer-item">
                             <h4>Информация</h4>
                             <ul>
-                                <li><a href="about.html"><span>О компании</span></a></li>
-                                <li><a href="investoru.html"><span>Инвестору</span></a></li>
-                                <li><a href="program.html"><span>Премиальная программа</span></a></li>
+                                <li>
+                                    <Link href="/about">
+                                        <a><span>О компании</span></a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/investor">
+                                        <a><span>Инвестору</span></a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/program">
+                                        <a><span>Премиальная программа</span></a>
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                         <div className="footer-item">
                             <h4>Помощь</h4>
                             <ul>
-                                <li><a href="faq.html"><span>FAQ</span></a></li>
-                                <li><a href="reviews.html"><span>Отзывы</span></a></li>
+                                <li>
+                                    <Link href="/faq">
+                                        <a><span>FAQ</span></a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/reviews">
+                                        <a><span>Отзывы</span></a>
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                         <div className="footer-item">
                             <h4>Личный кабинет</h4>
                             <ul>
-                                <li><a href="reg.html"><span>Регистрация</span></a></li>
-                                <li><a href="login.html"><span>Войти</span></a></li>
+                                <li>
+                                    <Link href="/cabinet/registration">
+                                        <a><span>Регистрация</span></a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href="/cabinet/login">
+                                        <a><span>Войти</span></a>
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -35,7 +65,9 @@ const Footer = () => (
                             <span>QuLab</span>
                         </div>
                         <div className="footer-button">
-                            <a href="" className="button">Инвестировать</a>
+                            <Link href={`/cabinet/${getAccessToken() ? 'deposite' : 'registration'}`}>
+                                <a className="button">Инвестировать</a>
+                            </Link>
                         </div>
                     </div>
                 </div>

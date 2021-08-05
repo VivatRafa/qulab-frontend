@@ -14,25 +14,13 @@ const Registration = () => {
     const { register, handleSubmit, setValue, getValues, formState: { errors }, setError, clearErrors } = useForm();
     const router = useRouter();
     const { ref } = router.query;
-
-    useEffect(() => {
-        if (ref) setValue('referralLink', window.location.href);
-    }, [ref])
+    console.log(ref);
 
     const onSubmit = async data => {
         clearErrors();
-        const { login, email, password, referralLink } = data;
+        const { login, email, password } = data;
 
-        let referralIdFromLink = null;
-
-        try {
-            const urlSearchParams = new URLSearchParams(new URL(referralLink).search);
-            const params = Object.fromEntries(urlSearchParams.entries());
-            referralIdFromLink = params.ref;
-
-        // eslint-disable-next-line no-empty
-        } catch (e) {}
-        const referralId = Number(ref || referralIdFromLink);
+        const referralId = Number(ref);
 
         const params = { login, email, password, ...(referralId && { referralId }) };
         try {
@@ -41,7 +29,11 @@ const Registration = () => {
             router.push('/cabinet/dashboard');
         } catch (e) {
             const errorResp = await e.response?.json();
-            const [errorMessage = 'Произошла какая-то ошбика, попробуйте позже'] = errorResp?.message || [];
+            let errorMessage = '';
+            if (Array.isArray(errorResp?.message)) [errorMessage] = errorResp?.message || [];
+            if (typeof errorResp?.message === 'string') errorMessage = errorResp?.message;
+            if (!errorMessage) errorMessage = 'Произошла какая-то ошбика, попробуйте позже';
+
             setError('rules', { type: 'serverError', message: errorMessage })
         }
     };
@@ -123,16 +115,6 @@ const Registration = () => {
                         />
                     </div>
 
-                    <div className="reg-item">
-                        <BaseInput
-                            labelIcon={icons.chain}
-                            label="Реферальная ссылка:"
-                            placeholder="Вставьте ссылку-приглашение"
-                            error={errors?.referral?.message}
-                            {...register('referralLink')}
-                        />
-                    </div>
-
                     <div className="reg-agreement">
                         <input 
                             type="checkbox"
@@ -162,5 +144,7 @@ const Registration = () => {
 }
 
 Registration.Layout = AuthLayout;
+Registration.needAuth = false;
+Registration.PageName = 'Registration';
 
 export default Registration

@@ -5,43 +5,11 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react';
 import Landing from '../layouts/landing';
 
-import whatImg from '../public/static/img/what-img.svg';
-import how1 from '../public/static/img/how1.svg';
-import how2 from '../public/static/img/how2.svg';
-import how3 from '../public/static/img/how3.svg';
-import how4 from '../public/static/img/how4.svg';
-import plansLeft1 from '../public/static/img/plans-left1.svg';
-import plansLeft2 from '../public/static/img/plans-left2.svg';
-import referalPrev from '../public/static/img/referal-prev.svg';
-import statusIcon1 from '../public/static/img/status-icon1.svg';
-import stars1 from '../public/static/img/stars1.svg';
-import stars2 from '../public/static/img/stars2.svg';
-import statusIcon2 from '../public/static/img/status-icon2.svg';
-import stars3 from '../public/static/img/stars3.svg';
-import statusIcon3 from '../public/static/img/status-icon3.svg';
-import stars4 from '../public/static/img/stars4.svg';
-import statusIcon4 from '../public/static/img/status-icon4.svg';
-import stars5 from '../public/static/img/stars5.svg';
-import statusIcon5 from '../public/static/img/status-icon5.svg';
-import stars6 from '../public/static/img/stars6.svg';
-import statusIcon6 from '../public/static/img/status-icon6.svg';
-import stars7 from '../public/static/img/stars7.svg';
-import statusIcon7 from '../public/static/img/status-icon7.svg';
-import stars8 from '../public/static/img/stars8.svg';
-import statusIcon8 from '../public/static/img/status-icon8.svg';
-import stars9 from '../public/static/img/stars9.svg';
-import statusIcon9 from '../public/static/img/status-icon9.svg';
-import stars10 from '../public/static/img/stars10.svg';
-import statusIcon10 from '../public/static/img/status-icon10.svg';
-import stars11 from '../public/static/img/stars11.svg';
-import referalNext from '../public/static/img/referal-next.svg';
-import advan1 from '../public/static/img/advan1.svg';
-import advan2 from '../public/static/img/advan2.svg';
-import advan3 from '../public/static/img/advan3.svg';
-import advan4 from '../public/static/img/advan4.svg';
-import BaseRange from '../components/base/BaseRange';
-import BaseDepositeCalculator from '../components/base/BaseDepositeCalculator';
-import BaseSlider from '../components/base/BaseSlider';
+import BaseDepositeCalculator from 'components/base/BaseDepositeCalculator';
+import BaseSlider from 'components/base/BaseSlider';
+import Link from 'next/link';
+import { getAccessToken } from '../utils/auth';
+import { statuses } from '../config/statuses';
 
 const Home = () => (
     <>
@@ -52,10 +20,12 @@ const Home = () => (
           <div className="what-wrap">
             <div className="what-left">
               <div className="img">
-                <Image src={whatImg} width="494" height="272" />
+                <Image src="/static/img/what-img.svg" width="494" height="272" />
               </div>
               <div className="what-left-button">
-                <a href="#" className="button"><span>Присоединиться</span></a>
+                <Link href={`/cabinet/${getAccessToken() ? 'registration' : 'dashboard'}`}>
+                  <a className="button"><span>Присоединиться</span></a>
+                </Link>
               </div>
             </div>
             <div className="what-right">
@@ -104,7 +74,7 @@ const Home = () => (
 
           <div className="how-wrap">
             <div className="img">
-              <Image src={how1} width="390" height="516" />
+              <Image src="/static/img/how1.svg" width="390" height="516" />
             </div>
             <div className="text">
               <h3>Регистрация аккаунта</h3>
@@ -113,26 +83,28 @@ const Home = () => (
               <p>Уровень пассивного дохода не зависит от внешних условий. Вы сами формируете инвестиции, размещая свой депозит в том или ином секторе инвестиций. Мы выполняем функции финансового менеджмента, гарантируя сохранность инвестированных средств в любой ситуации.</p>
 
               <div className="how-text-button">
-                <a href="#" className="button"><span>Зарегистрироваться</span></a>
+                <Link href="/cabinet/registration"><a className="button"><span>Зарегистрироваться</span></a></Link>
               </div>
             </div>
           </div>
           <div className="how-wrap">
             <div className="img">
-              <Image src={how2} width="316" height="340" />
+              <Image src="/static/img/how2.svg" width="316" height="340" />
             </div>
             <div className="text">
               <h3>Открытие депозита</h3>
               <p>Сразу после создания учётной записи вы можете открыть депозит, чтобы начать первые инвестиционные шаги. Откройте раздел «Пополнить» и выберите наиболее удобный способ. Время пополнения занимает всего несколько минут после оплаты счета. Во вкладке «Инвестиции» вы сможете выбрать подходящий тарифный план и начать зарабатывать. Обязательно укажите сумму для выбранного направления. После выбора тарифного плана, ваш инвестиционный пакет начинает работать через 24 часа.</p>
 
               <div className="how-text-button">
-                <a href="#" className="button1">Открыть депозит</a>
+                <Link href={`/cabinet/${getAccessToken() ? 'deposite': 'registration'}`}>
+                  <a className="button1">Открыть депозит</a>
+                </Link>
               </div>
             </div>
           </div>
           <div className="how-wrap">
             <div className="img">
-              <Image src={how3} width="445" height="437" />
+              <Image src="/static/img/how3.svg" width="445" height="437" />
             </div>
             <div className="text">
               <h3>Как получить прибыль</h3>
@@ -140,20 +112,24 @@ const Home = () => (
               <p>Заранее рассчитать сумму зачислений можно в тарифном плане, где указывается общая доходность и другая полезная информация. Обо всех своих инвестициях можно узнать в разделе истории, где хранится вся информация по полученной прибыли</p>
 
               <div className="how-text-button">
-                <a href="#" className="button1">Проверить депозиты</a>
+                <Link href={`/cabinet/${getAccessToken() ? 'deposite-history': 'registration'}`}>
+                  <a className="button1">Проверить депозиты</a>
+                </Link>
               </div>
             </div>
           </div>
           <div className="how-wrap">
             <div className="img">
-              <Image src={how4} width="339" height="344" />
+              <Image src="/static/img/how4.svg" width="339" height="344" />
             </div>
             <div className="text">
               <h3>Вывод средств</h3>
               <p>Вывести средства можно в любой момент времени. Операции обрабатываются в автоматическом режиме нашими алгоритмами. Для этого нужно перейти во вкладку настроек аккаунта, указать свои платёжные реквизиты и выбрать подходящую платёжную систему. Выберите свой кошелёк и введите всю необходимую информацию (ФИО, Дата рождения и.т.д…). На странице «Вывод» укажите сумму средств для получения, валюту и систему, после чего деньги будут зачислены в ближайшее время.</p>
 
               <div className="how-text-button">
-                <a href="#" className="button1">Вывести стредства</a>
+              <Link href={`/cabinet/${getAccessToken() ? 'withdraw': 'registration'}`}>
+                <a className="button1">Вывести стредства</a>
+              </Link>
               </div>
             </div>
           </div>
@@ -178,39 +154,34 @@ const Home = () => (
               <p>Благодаря реферальной программе инвесторы с небольшим стартовым капиталом могут значительно улучшить свои позиции и начать зарабатывать больше. Для улучшения взаимодействия мы дополнительно внедрили системы статусов и премий. Приглашенные пользователи будут увеличивать ваш бонус к обороту.</p>
               <p>Благодаря продуманной и прозрачной системе вы сможете построить пассивный доход на основе нашей платформы и начать зарабатывать вместе с QuLab.</p>
               <div className="referal-left-button">
-                <a href="#" className="button">Подробнее</a>
+                <Link href="/program/#referral">
+                  <a className="button">Подробнее</a>
+                </Link>
               </div>
             </div>
             <div className="referal-right">
-              <Image src={referalPrev} width="100" height="100" />
-              <div className="before" />
-
-              {/* <div className="referal-slider">
-                <div className="status-item">
-                  <div className="icon">
-                    <Image src={statusIcon1} width="100" height="100" />
-                  </div>
-                  <div className="stars">
-                    <Image src={stars1} width="100" height="100" />
-                  </div>
-                  <h4>Консультант</h4>
-                  <div className="bonus">
-                    <h5>Бонус:</h5>
-                    <div className="bonus-wrap">
-                      <p>5<span>%</span></p>
-                      <p>от личных продаж</p>
+              <BaseSlider className="referal-slider">
+                {statuses.map(({ name, bonus, amount, referral }, i) => (
+                  <div className="status-item" key={name}>
+                    <div className="icon">
+                        <Image width="40" height="40" src={`/static/img/status-icon${i + 1}.svg`} alt="" />
                     </div>
+                    <div className="stars">
+                        <Image width="302" height="24" src={`/static/img/stars${i + 1}.svg`} alt="" />
+                    </div>
+                    <h4>{name}</h4>
+                    <div className="bonus">
+                        <h5>Бонус:</h5>
+                        <div className="bonus-wrap">
+                            <p>{bonus}<span>%</span></p>
+                            <p>от личных продаж</p>
+                        </div>
+                    </div>
+                    <p>Личный оборот (вклад): <span>{'>'} ${amount} QU</span></p>
+                    <p>Оборот структуры: <span>{referral}</span></p>
                   </div>
-                  <p>Личный оборот (вклад): <span>&gt; 500 QU</span></p>
-                  <p>Оборот структуры: <span>X</span></p>
-                </div>
-
-              </div> */}
-
-              <BaseSlider />
-
-              <div className="after" />
-              <Image src={referalNext} width="100" height="100" />
+                ))}
+              </BaseSlider>
             </div>
           </div>
         </div>
@@ -223,7 +194,7 @@ const Home = () => (
           <div className="advan-wrap">
             <div className="advan-item">
               <div className="img">
-                <Image src={advan1} width="100" height="100" />
+                <Image src="/static/img/advan1.svg" width="100" height="100" />
               </div>
               <div className="text">
                 <h3>Почему QuLab</h3>
@@ -232,7 +203,7 @@ const Home = () => (
             </div>
             <div className="advan-item">
               <div className="img">
-                <Image src={advan2} width="100" height="100" />
+                <Image src="/static/img/advan2.svg" width="100" height="100" />
               </div>
               <div className="text">
                 <h3>Безопасность</h3>
@@ -241,7 +212,7 @@ const Home = () => (
             </div>
             <div className="advan-item">
               <div className="img">
-                <Image src={advan3} width="100" height="100" />
+                <Image src="/static/img/advan3.svg" width="100" height="100" />
               </div>
               <div className="text">
                 <h3>Стабильность</h3>
@@ -250,7 +221,7 @@ const Home = () => (
             </div>
             <div className="advan-item">
               <div className="img">
-                <Image src={advan4} width="100" height="100" />
+                <Image src="/static/img/advan4.svg" width="100" height="100" />
               </div>
               <div className="text">
                 <h3>Выгодные условия</h3>
@@ -264,5 +235,7 @@ const Home = () => (
   )
 
 Home.Layout = Landing;
+Home.needAuth = false;
+Home.PageName = 'Home';
 
 export default Home;

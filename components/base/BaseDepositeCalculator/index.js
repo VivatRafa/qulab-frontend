@@ -3,39 +3,40 @@ import Image from 'next/image'
 import BaseRange from 'components/base/BaseRange';
 import Big from 'big.js';
 import Link from 'next/link';
-import { getAccessToken } from '../../../utils/auth';
+import { getAccessToken } from 'utils/auth';
 
 const tariffs = {
     1: {
         id: 1,
-        name: 'junior',
+        name: 'Junior',
         amount: {
             from: 100,
             until: 1000,
         },
         percent: 1.1,
+        days: 91,
     },
     2: {
         id: 2,
-        name: 'middle',
+        name: 'Middle',
         amount: {
             from: 1001,
             until: 5000,
         },
         percent: 1.32,
+        days: 76
     },
     3: {
         id: 3,
-        name: 'senior',
+        name: 'Senior',
         amount: {
             from: 5001,
             until: 9999999,
         },
         percent: 1.58,
+        days: 64,
     }
 }
-
-const days = 180;
 
 const BaseDepositeCalculator = ({ withoutButton }) => {
     const [tariff, setTariff] = useState(1);
@@ -50,7 +51,7 @@ const BaseDepositeCalculator = ({ withoutButton }) => {
         setProfit(profitVal);
     }, [invest])
 
-    const { name, amount: { from, until }, percent } = tariffs[tariff];
+    const { name, amount: { from, until }, percent, days } = tariffs[tariff];
     const bigInvest = Big(invest);
     const bigPercent = Big(percent);
     const amountSum = bigInvest.plus(bigInvest.times(bigPercent).times(Big(days))).toNumber();
@@ -76,7 +77,7 @@ const BaseDepositeCalculator = ({ withoutButton }) => {
                     <p>в день</p>
                   </div>
                   <p>Сумма депозита: <span>от {from} QU</span></p>
-                  <p>Срок: <span>180 дней</span></p>
+                  <p>Срок: <span>{days} дней</span></p>
                 </div>
               </div>
             </div>
@@ -111,7 +112,7 @@ const BaseDepositeCalculator = ({ withoutButton }) => {
                 <div className="plans-bottom-button">
                 {!withoutButton && (
                   <Link href={`/cabinet/${getAccessToken() ? 'deposite' : 'registration'}`}>
-                    <a href="#" className="button">Инвестировать</a>
+                    <a className="button">Инвестировать</a>
                   </Link>
                 )}
                 </div>
@@ -120,7 +121,7 @@ const BaseDepositeCalculator = ({ withoutButton }) => {
                 <div className="button">
                   {!withoutButton && (
                     <Link href={`/cabinet/${getAccessToken() ? 'deposite' : 'registration'}`}>
-                      <a href="#" className="button">Инвестировать</a>
+                      <a className="button">Инвестировать</a>
                     </Link>
                   )}
                 </div>

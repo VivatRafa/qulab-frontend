@@ -61,7 +61,7 @@ const Withdrawal = () => {
 
             <div className="operation-block margin">
                 <div className="operation-title">
-                    <img src="img/money3.svg" alt="" />
+                    <Image width="40" height="40" src="/static/img/money3.svg" alt="" />
                     <span>Вывести средства:</span>
                 </div>
                 <form  onSubmit={handleSubmit(onSubmit)} >
@@ -95,7 +95,7 @@ const Withdrawal = () => {
                         </div>
                     </div>
                     
-                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>Комиссия для вывода средств варьируется от 0.00015 BTC(~6 USD) до 0.00060 BTC(~24 USD) </div>
+                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>Комиссия для вывода средств варьируется от 0.00060 BTC(~24 USD) </div>
 
                     <button type="submit" className="button">Вывести средства</button>
                 </form>
@@ -121,11 +121,10 @@ const Withdrawal = () => {
                                     <td>{date}</td>
                                     <td>{amount} QU</td>
                                     <td>
-                                        <img src="img/qiwi.svg" alt="" />
                                         Кошелек
                                     </td>
                                     <td>
-                                        <img src="img/berty.svg" alt="" />
+                                        <Image height="18" width="18" src="/static/img/btc.svg" alt="" />
                                         BitCoin
                                     </td>
                                     <td className="green">Выполнено</td>

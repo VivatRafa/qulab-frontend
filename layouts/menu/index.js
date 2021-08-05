@@ -52,7 +52,7 @@ const Menu = () => {
                         <svg width="18" height="18">
                             <use xlinkHref="sprites.svg#deposit" />
                         </svg>
-                        <span>Сделать депозит</span>
+                        <span>Инвестировать</span>
                     </a>
                 </li>
                 <li className={router.asPath === '/cabinet/deposite-history' ? 'active' : ''}>

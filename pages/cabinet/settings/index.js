@@ -103,7 +103,7 @@ const Settings = () => {
 			<form onSubmit={handleSubmitPersonal(personalOnSubmit)}>					
 				<div className="operation-block">
 					<div className="operation-title">
-						<img src="img/operation3.svg" alt="" />
+						<Image width="40" height="40" src="/static/img/operation3.svg" alt="" />
 						<span>Личные данные</span>
 					</div>
 					<div>
@@ -150,7 +150,7 @@ const Settings = () => {
 			<form onSubmit={handleSubmitPayment(paymentOnSubmit)}>	
 				<div className="operation-block">
 					<div className="operation-title">
-						<img src="img/operation5.svg" alt="" />
+						<Image width="40" height="40" src="/static/img/operation5.svg" alt="" />
 						<span>Платежные данные</span>
 					</div>
 					<div>
@@ -172,7 +172,7 @@ const Settings = () => {
 			<form onSubmit={handleSubmitPassword(passwordOnSubmit)}>	
 				<div className="operation-block">
 					<div className="operation-title">
-						<img src="img/operation6.svg" alt="" />
+						<Image width="40" height="40" src="/static/img/operation6.svg" alt="" />
 						<span>Смена пароля</span>
 					</div>
 					<div>

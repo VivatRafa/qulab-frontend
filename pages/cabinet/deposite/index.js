@@ -2,9 +2,9 @@ import React from 'react'
 import { mutate } from 'swr';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
-import BaseInput from '../../../components/base/BaseInput';;
+import BaseInput from 'components/base/BaseInput';;
 import kyFetch from 'api';
-import BaseDepositeCalculator from '../../../components/base/BaseDepositeCalculator';
+import BaseDepositeCalculator from 'components/base/BaseDepositeCalculator';
 
 const depositeTarrifs = [
     {
@@ -51,7 +51,7 @@ const Deposite = () => {
 
             <div className="operation-block margin">
                 <div className="operation-title">
-                    <img src="img/operation1.svg" alt="" />
+                    <Image width="40" height="40" src="/static/img/operation1.svg" alt="" />
                     <span>Сделать депозит:</span>
                 </div>
                 <form  onSubmit={handleSubmit(onSubmit)} >

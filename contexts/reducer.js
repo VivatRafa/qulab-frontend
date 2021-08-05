@@ -5,6 +5,12 @@ export const reducer = (state, action) => {
           ...state,
           isMenuOpen: action.payload ?? !state.isMenuOpen,
         }
+
+      case 'toggleMobileMenu':
+        return {
+          ...state,
+          isMobileMenuOpen: action.payload ?? !state.isMobileMenuOpen,
+        }
   
       default:
         return state
@@ -12,5 +18,6 @@ export const reducer = (state, action) => {
   }
   
   export const initialState = {
-    isMenuOpen: false
+    isMenuOpen: false,
+    isMobileMenuOpen: false,
   }

@@ -20,8 +20,7 @@ const notAvailableForAuth = ['Registration', 'Login', 'PasswordRecovery'];
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  const Layout = Component.Layout || DefaultLayout;
-  const PageName = Component?.name;
+  const { Layout = DefaultLayout, needAuth, PageName } = Component || {};
 
   useEffect(() => {
     const isNotAvailableForAuth = notAvailableForAuth.includes(PageName);
@@ -30,6 +29,25 @@ function MyApp({ Component, pageProps }) {
     if (isCabinetPage && !getAccessToken()) logout();
     if (isNotAvailableForAuth && getAccessToken()) router.push('/cabinet/dashboard');
   }, [PageName])
+
+  // сделать человеческий route guard
+  // useEffect(() => {
+  //   const noNeedAuthRoutes = ['/about','/faq','/investor','/program','/reviews','/cabinet/registration','/cabinet/login','/cabinet/password-recovery'];
+  //   const handleRouteChange = (url) => {
+  //     const isCabinetNeedAuthPage = !noNeedAuthRoutes.includes(url) && !getAccessToken();
+  //     if (isCabinetNeedAuthPage) {
+  //       router.push('/');
+  //     };
+  //   }
+
+  //   router.events.on('routeChangeStart', handleRouteChange)
+
+  //   // If the component is unmounted, unsubscribe
+  //   // from the event with the `off` method:
+  //   return () => {
+  //     router.events.off('routeChangeStart', handleRouteChange)
+  //   }
+  // }, [PageName])
   
   const isCabinetPage = router.asPath.includes('cabinet');
 

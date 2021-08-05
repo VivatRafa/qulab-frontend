@@ -4,9 +4,7 @@ import useSWR from 'swr';
 import Big from 'big.js';
 import dayjs from 'dayjs';
 import kyFetch from 'api';
-
-import btcImg from 'public/static/img/btc.svg';
-import payments from '../../../config/payments';
+import payments from 'config/payments';
 
 const operationsType = ['Депозит', 'Вывод', 'Пополнение'];
 const statusClasses = ['green', 'yellow', 'red'];
@@ -58,7 +56,7 @@ const OperationsHistory = () => {
                                 <td>{amount} QU</td>
                                 <td>
                                     <span style={{ marginRight: '5px' }}>
-                                        <Image src={btcImg} width="18" height="18" alt="" />
+                                        <Image src="/static/img/btc.svg" width="18" height="18" alt="" />
                                     </span>
                                     BitCoin
                                 </td>

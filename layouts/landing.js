@@ -4,30 +4,59 @@ import Header from './header';
 import Footer from './footer';
 import router, { useRouter } from 'next/router';
 import Image from 'next/image';
+import BaseSlider from 'components/base/BaseSlider';
 
-import headerImg from '../public/static/img/header-img.svg';
-import headerAboutImg from '../public/static/img/header-about-img.svg';
 import Link from 'next/link';
 import { getAccessToken } from '../utils/auth';
+import { reviews } from '../config/reviews';
+import { GlobalContext } from 'contexts';
+import useOnclickOutside from 'react-cool-onclickoutside';
 
 const Landing = ({ children }) => {
+    const [state, dispatch] = React.useContext(GlobalContext);
+    const { isMenuOpen } = state;
     const router = useRouter();
-    const isHomePage = router.asPath === '/';
-    const isAboutPage = router.asPath === '/about';
-    const isProgramPage = router.asPath === '/program';
-    const isInvestorPage = router.asPath === '/investor';
-    const isReviewPage = router.asPath === '/reviews';
-    const isFaqPage = router.asPath === '/faq';
+    // костыль
+    const isHomePage = router.asPath === '/' || router.asPath === '/#calculator';
+    const isAboutPage = router.asPath.includes('/about');
+    const isProgramPage = router.asPath.includes('/program');
+    const isInvestorPage = router.asPath.includes('/investor');
+    const isReviewPage = router.asPath.includes('/reviews');
 
     const headerClass = `${router.asPath.replace('/', '')}-header`;
     return (
         <>
-            <ul className="mob-menu">
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="investoru.html">Инвестору</a></li>
-                <li><a href="program.html">Премиальная программа</a></li>
-                <li><a href="reviews.html">Отзывы</a></li>
-                <li><a href="faq.html">FAQ</a></li>
+            <ul className={`mob-menu ${isMenuOpen ? 'active' : ''}`}>
+                <li>
+                    <a onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/about');
+                    }}>О нас</a>
+                </li>
+                <li>
+                    <a onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/investor');
+                    }}>Инвестору</a>
+                </li>
+                <li>
+                    <a onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/program');
+                    }}>Премиальная программа</a>
+                </li>
+                <li>
+                    <a onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/reviews');
+                    }}>Отзывы</a>
+                </li>
+                <li>
+                    <a onClick={() => {
+                        dispatch({ type: 'toggleMenu', payload: false })
+                        router.push('/faq');
+                    }}>FAQ</a>
+                </li>
             </ul>
     
             <div className="bg-block" />
@@ -49,7 +78,7 @@ const Landing = ({ children }) => {
                                 </div>
                             </div>
                             <div className="header-img">
-                                <Image src={headerImg} width="538" height="468" />
+                                <Image src="/static/img/header-img.svg" width="538" height="468" />
                             </div>
                         </div>
                     </div>
@@ -62,10 +91,10 @@ const Landing = ({ children }) => {
                             <div className="header-about-block-wrap">
                                 <div className="left">
                                     <div className="header-about-img">
-                                        <Image src={headerAboutImg} width="594" height="328" />
+                                        <Image src="/static/img/header-about-img.svg" width="594" height="328" />
                                     </div>
                                     <div className="header-about-button">
-                                        <a href="#" className="button"><span>Присоединиться</span></a>
+                                        <a className="button"><span>Присоединиться</span></a>
                                     </div>
                                 </div>
                                 <div className="right">
@@ -112,7 +141,7 @@ const Landing = ({ children }) => {
                                     <p>Первым делом вам нужно подать заявку на регистрацию учётной записи. После этого вы сможете пополнить баланс удобным для вас способом. Денежные средства со своего личного счёта вы можете вложить в любой доступный тарифный план представленный на платформе. Внимательно прочитайте условия и выберите наиболее оптимальные для вас. Полученную прибыль вследствие работы ваших инвестиций вы сможете вывести на выбранные вами в личном кабинете платёжные системы.</p>
                 
                                     <div className="header-program-button">
-                                        <a href="#" className="button"><span>Посмотреть презентацию</span></a>
+                                        <a className="button"><span>Посмотреть презентацию</span></a>
                                     </div>
                                 </div>
                             </div>			
@@ -126,49 +155,25 @@ const Landing = ({ children }) => {
                             <h1>Отзывы</h1>
                             <div className="header-reviews-block-wrap">
                                 <div className="header-reviews-slider-wrap">
-                                    <img src="img/referal-prev.svg" alt="" className="prev" />
-                                    <img src="img/referal-next.svg" alt="" className="next" />
                                     <div className="before"></div>
                                     <div className="after"></div>
 
-                                    <div className="header-reviews-slider">
-                                        <div className="reviews-slider-item">
-                                            <div className="title">
-                                                <div className="top">
-                                                    <p>22 мая 2021</p>
-                                                    <p>Junior Program</p>
+                                    <BaseSlider className="header-reviews-slider">
+                                        {reviews.map(({ date, name, text, program }, i) => (
+                                            <div className="reviews-slider-item" key={i}>
+                                                <div className="title">
+                                                    <div className="top">
+                                                        <p>{date}</p>
+                                                        <p>{program} Program</p>
+                                                    </div>
+                                                    <p>{name}</p>
                                                 </div>
-                                                <p>Александр (aleksRud)</p>
-                                            </div>
-                                            <div className="text">
-                                                <p>Оценка 100. Пока что начал со стартовой программы. Вложился по минимуму, но уже все радует. Выплаты выбрал ежемесячные. Чисто создал депозит, чтобы просто проверить как работает, как устроено все, и платит ли вообще кооператив. Все порадовало, пока что. Посмотрим, как и дальше будет. Но что-то мне подсказывает, что проблем с деньгами с QuLab не будет, это уж точно!</p>
-                                            </div>
-                                        </div>
-                                        {/* <div className="reviews-slider-item">
-                                            <div className="title">
-                                                <div className="top">
-                                                    <p>22 мая 2021</p>
-                                                    <p>Junior Program</p>
+                                                <div className="text">
+                                                    <p>{text}</p>
                                                 </div>
-                                                <p>Олег (aleksRud)</p>
                                             </div>
-                                            <div className="text">
-                                                <p>Оценка 100. Пока что начал со стартовой программы. Вложился по минимуму, но уже все радует. Выплаты выбрал ежемесячные. Чисто создал депозит, чтобы просто проверить как работает, как устроено все, и платит ли вообще кооператив. Все порадовало, пока что. Посмотрим, как и дальше будет. Но что-то мне подсказывает, что проблем с деньгами с QuLab не будет, это уж точно!</p>
-                                            </div>
-                                        </div>
-                                        <div className="reviews-slider-item">
-                                            <div className="title">
-                                                <div className="top">
-                                                    <p>22 мая 2021</p>
-                                                    <p>Junior Program</p>
-                                                </div>
-                                                <p>Андрей (aleksRud)</p>
-                                            </div>
-                                            <div className="text">
-                                                <p>Оценка 100. Пока что начал со стартовой программы. Вложился по минимуму, но уже все радует. Выплаты выбрал ежемесячные. Чисто создал депозит, чтобы просто проверить как работает, как устроено все, и платит ли вообще кооператив. Все порадовало, пока что. Посмотрим, как и дальше будет. Но что-то мне подсказывает, что проблем с деньгами с QuLab не будет, это уж точно!</p>
-                                            </div>
-                                        </div> */}
-                                    </div>
+                                        ))}
+                                    </BaseSlider>
                                 </div>
                                 <div className="header-reviews-form">
                                     <h3>Оставьте свой отзыв</h3>

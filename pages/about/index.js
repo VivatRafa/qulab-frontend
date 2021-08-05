@@ -2,15 +2,6 @@ import React from 'react'
 import Landing from '../../layouts/landing';
 import Image from 'next/image';
 
-import about from '../../public/static/img/about-how-img.svg'
-import advan1 from '../../public/static/img/advan1.svg'
-import advan2 from '../../public/static/img/advan2.svg'
-import advan3 from '../../public/static/img/advan3.svg'
-import advan4 from '../../public/static/img/advan4.svg'
-import docs1 from '../../public/static/img/docs1.jpg'
-import docs2 from '../../public/static/img/docs2.jpg'
-import docs3 from '../../public/static/img/docs3.jpg'
-
 const About = () => {
     return (
         <>
@@ -24,8 +15,7 @@ const About = () => {
                             <p>Нашей задачей не является создание инноваций — мы внедряем уже проверенные инновации, а так же использование негосударственного регулирование инвестиционных секторов позволяет создать условия для людей, которые заинтересованы в получении прибыли на постоянной основе. Мы высоко ценим доверие наших клиентов и обеспечивает полную анонимность во время работы.</p>
                         </div>
                         <div className="img">
-                            <Image src={about} width="594" height="328" /> 
-                            {/* <img src="img/about-how-img.svg" alt="" /> */}
+                            <Image src="/static/img/about-how-img.svg" width="594" height="328" /> 
                         </div>
                     </div>
                 </div>
@@ -38,8 +28,7 @@ const About = () => {
                     <div className="advan-wrap">
                         <div className="advan-item">
                             <div className="img">
-                                <Image src={advan1} width="80" height="85" /> 
-                                {/* <img src="img/advan1.svg" alt="" /> */}
+                                <Image src="/static/img/advan1.svg" width="80" height="85" /> 
                             </div>
                             <div className="text">
                                 <h3>Почему QuLab</h3>
@@ -48,8 +37,7 @@ const About = () => {
                         </div>
                         <div className="advan-item">
                             <div className="img">
-                                <Image src={advan2} width="86" height="83" /> 
-                                {/* <img src="img/advan2.svg" alt="" /> */}
+                                <Image src="/static/img/advan2.svg" width="86" height="83" /> 
                             </div>
                             <div className="text">
                                 <h3>Безопасность</h3>
@@ -58,8 +46,7 @@ const About = () => {
                         </div>
                         <div className="advan-item">
                             <div className="img">
-                                <Image src={advan3} width="87" height="87" /> 
-                                {/* <img src="img/advan3.svg" alt="" /> */}
+                                <Image src="/static/img/advan3.svg" width="87" height="87" /> 
                             </div>
                             <div className="text">
                                 <h3>Стабильность</h3>
@@ -68,7 +55,7 @@ const About = () => {
                         </div>
                         <div className="advan-item">
                             <div className="img">
-                                <Image src={advan4} width="81" height="81" />
+                                <Image src="/static/img/advan4.svg" width="81" height="81" />
                             </div>
                             <div className="text">
                                 <h3>Выгодные условия</h3>
@@ -86,15 +73,12 @@ const About = () => {
                     <div className="docs-wrap">
                         <div className="docs-item">
                             <Image src="/static/img/docs1.jpg" width="232" height="388" />
-                            {/* <img src="img/docs1.jpg" alt="" /> */}
                         </div>
                         <div className="docs-item">
                             <Image src="/static/img/docs2.jpg" width="482" height="367" /> 
-                            {/* <img src="img/docs2.jpg" alt="" /> */}
                         </div>
                         <div className="docs-item">
                             <Image src="/static/img/docs3.jpg" width="395" height="282" /> 
-                            {/* <img src="img/docs3.jpg" alt="" /> */}
                         </div>
                     </div>
                 </div>
@@ -104,5 +88,7 @@ const About = () => {
 }
 
 About.Layout = Landing;
+About.needAuth = false;
+About.PageName = 'About';
 
 export default About;

@@ -1,8 +1,10 @@
 import React from 'react'
-import Landing from '../../layouts/landing';
+import Landing from 'layouts/landing';
 import Image from 'next/image';
-import BaseRange from '../../components/base/BaseRange';
-import BaseDepositeCalculator from '../../components/base/BaseDepositeCalculator';
+import BaseRange from 'components/base/BaseRange';
+import BaseDepositeCalculator from 'components/base/BaseDepositeCalculator';
+import BaseSlider from 'components/base/BaseSlider';
+import { statuses } from '../../config/statuses';
 
 const Investor = () => {
     return (
@@ -16,41 +18,28 @@ const Investor = () => {
                             <p>Благодаря продуманной и прозрачной системе вы сможете построить пассивный доход на основе нашей платформы и начать зарабатывать вместе с QuLab.</p>
                         </div>
                         <div className="referal-right">
-                            <div className="referal-prev">
-                                <Image src="/static/img/referal-prev.svg" alt="" className="referal-prev" width="15" height="26" />
-                            </div>
-                            {/* <img src="img/referal-prev.svg" alt="" className="referal-prev" /> */}
-                            <div className="before"></div>
-
-                            <div className="referal-slider">
-                                <div className="status-item">
+                            <BaseSlider className="referal-slider">
+                                {statuses.map(({ name, bonus, amount, referral }, i) => (
+                                <div className="status-item" key={name}>
                                     <div className="icon">
-                                        <Image src="/static/img/status-icon1.svg" alt="" width="100" height="100" />
-                                        {/* <img src="img/status-icon1.svg" alt="" /> */}
+                                        <Image width="40" height="40" src={`/static/img/status-icon${i + 1}.svg`} alt="" />
                                     </div>
                                     <div className="stars">
-                                        <Image src="/static/img/stars1.svg" alt="" width="100" height="100" />
-                                        {/* <img src="img/stars1.svg" alt="" /> */}
+                                        <Image width="302" height="24" src={`/static/img/stars${i + 1}.svg`} alt="" />
                                     </div>
-                                    <h4>Консультант</h4>
+                                    <h4>{name}</h4>
                                     <div className="bonus">
                                         <h5>Бонус:</h5>
                                         <div className="bonus-wrap">
-                                            <p>5<span>%</span></p>
+                                            <p>{bonus}<span>%</span></p>
                                             <p>от личных продаж</p>
                                         </div>
                                     </div>
-                                    <p>Личный оборот (вклад): <span>{'>'} 500 QU</span></p>
-                                    <p>Оборот структуры: <span>X</span></p>
+                                    <p>Личный оборот (вклад): <span>{'>'} ${amount} QU</span></p>
+                                    <p>Оборот структуры: <span>{referral}</span></p>
                                 </div>
-                                
-                            </div>
-
-                            <div className="after"></div>
-                            <div className="referal-next">
-                                <Image src="/static/img/referal-next.svg" alt="" className="referal-next" width="15" height="26" />
-                            </div>
-                            {/* <img src="img/referal-next.svg" alt="" className="referal-next" /> */}
+                                ))}
+                            </BaseSlider>
                         </div>
                     </div>
                 </div>
@@ -68,5 +57,8 @@ const Investor = () => {
 }
 
 Investor.Layout = Landing;
+Investor.needAuth = false;
+
+Investor.PageName = 'Investor';
 
 export default Investor;

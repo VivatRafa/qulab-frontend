@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import kyFetch from 'api';
 import { useState } from "react";
+import Image from "next/image";
 
 const Structure = () => {
     const [isOpen, setIsOpen] = useState({
@@ -21,7 +22,9 @@ const Structure = () => {
 
             <div className="structure-block">
                 <div className="structure-title">
-                    <img src="img/money5.svg" alt=""/>
+                    <div style={{ marginRight: 10 }}>
+                        <Image width="40" height="28" src="/static/img/money5.svg" alt=""/>
+                    </div>
                     Мои инвесторы:
                 </div>
                 {Object.keys(structure).filter(refLine => structure[refLine]?.length).map((refLine, i) => (
