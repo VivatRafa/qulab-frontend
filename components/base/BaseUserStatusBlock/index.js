@@ -4,16 +4,16 @@ import Image from 'next/image';
 import { statuses } from '../../../config/statuses';
 
 const BaseUserStatusBlock = () => {
-    const { data: balanceData = {}, error } = useSWR('balance', async () => {
-        const resp = await kyFetch.get('balance').json();
+
+    const { data: userData = {} } = useSWR('userInfo', async () => {
+        const resp = await kyFetch.get('users').json();
 
         return resp;
     })
 
-    const { data: userData = {} } = useSWR('userInfo', async () => {
-        const resp = await kyFetch.get('users').json();
-        console.log(resp);
-        // eslint-disable-next-line camelcase
+    const { data: balanceData = {}, error } = useSWR('balance', async () => {
+        const resp = await kyFetch.get('balance').json();
+
         return resp;
     })
 

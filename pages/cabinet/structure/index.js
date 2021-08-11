@@ -2,6 +2,7 @@ import useSWR from "swr";
 import kyFetch from 'api';
 import { useState } from "react";
 import Image from "next/image";
+import { showAmount } from 'utils';
 
 const Structure = () => {
     const [isOpen, setIsOpen] = useState({
@@ -40,7 +41,7 @@ const Structure = () => {
                                     </p>
                                     {/* <p className="purpur">+7 (***) ***-**-14</p> */}
                                     <p>id:&nbsp;<span className="purpur">{id}</span></p>
-                                    <p>Инвестировано:&nbsp;<span className="purpur">{invested} QU</span></p>
+                                    <p>Инвестировано:&nbsp;<span className="purpur">{showAmount(invested)} QU</span></p>
                                 </div>
                             ))}
                         </div>

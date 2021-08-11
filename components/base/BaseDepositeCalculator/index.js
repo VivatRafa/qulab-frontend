@@ -58,7 +58,7 @@ const BaseDepositeCalculator = ({ withoutButton }) => {
     const percentSum = bigPercent.times(Big(days)).toNumber();
 
     return (
-        <div id="calculator" className="plans-big-block">
+        <div id="calculator" className={`plans-big-block ${withoutButton ? 'withoutButton' : ''}`}>
             <div className="plans-top">
               <div className="left">
                 <Image src="/static/img/plans-left1.svg" width="74" height="118" />
@@ -109,22 +109,22 @@ const BaseDepositeCalculator = ({ withoutButton }) => {
                   />
                   <div className="max">2.4</div>
                 </div>
-                <div className="plans-bottom-button">
                 {!withoutButton && (
-                  <Link href={`/cabinet/${getAccessToken() ? 'deposite' : 'registration'}`}>
-                    <a className="button">Инвестировать</a>
-                  </Link>
-                )}
-                </div>
-              </div>
-              <div className="plans-bottom-right">
-                <div className="button">
-                  {!withoutButton && (
+                  <div className="plans-bottom-button">
                     <Link href={`/cabinet/${getAccessToken() ? 'deposite' : 'registration'}`}>
                       <a className="button">Инвестировать</a>
                     </Link>
+                  </div>
+                )}
+              </div>
+              <div className="plans-bottom-right">
+                  {!withoutButton && (
+                    <div className="button">
+                      <Link href={`/cabinet/${getAccessToken() ? 'deposite' : 'registration'}`}>
+                        <a className="button">Инвестировать</a>
+                      </Link>
+                    </div>
                   )}
-                </div>
                 <div className="text">
                   <div className="sum">
                     <h5>Итоговая сумма:</h5>

@@ -14,7 +14,7 @@ const Registration = () => {
     const { register, handleSubmit, setValue, getValues, formState: { errors }, setError, clearErrors } = useForm();
     const router = useRouter();
     const { ref } = router.query;
-    console.log(ref);
+
 
     const onSubmit = async data => {
         clearErrors();

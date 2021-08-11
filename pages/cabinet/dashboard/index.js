@@ -13,7 +13,7 @@ import BaseUserStatusBlock from 'components/base/BaseUserStatusBlock';
 const Dashboard = () => {
     const [user] = useUserInfo();
 
-    const { data: userData = {} } = useSWR('userInfo', async () => {
+    const { data: userData } = useSWR('userInfo', async () => {
         const resp = await kyFetch.get('users').json();
 
         // eslint-disable-next-line camelcase
@@ -45,7 +45,7 @@ const Dashboard = () => {
         referral = 0,
         withdrawn = 0 
     } = balanceData;
-    const { lastActivity, registrationDate } = userData;
+    const { lastActivity, registrationDate } = userData || {};
     const { id } = user || {};
 
     let referralAndDepositeSum = 0;
@@ -65,7 +65,7 @@ const Dashboard = () => {
                 <p>Дата последней активности:&nbsp;<span className="purpur">{lastActivity}</span></p>
             </div>
 
-            <BaseUserStatusBlock />
+            {userData && <BaseUserStatusBlock />}
 
             <div className="money-wrap">
                 <div className="money-item">

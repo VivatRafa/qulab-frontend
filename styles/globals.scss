@@ -222,8 +222,10 @@ aside ul li a:hover svg, aside ul li.active a svg {
   
 
   .plans-big-block {
-    border-radius: 0;
+    border-radius: 12px;
+    background: #fff;
     padding: 20px;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.05);
   }
 
   .plans-bottom {
