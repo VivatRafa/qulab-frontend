@@ -66,7 +66,7 @@ const Menu = () => {
                         <span>История депозитов</span>
                     </a>
                 </li>
-                <li className={router.asPath === '/cabinet/operations' ? 'active' : ''}>
+                <li className={router.asPath === '/cabinet/operations-history' ? 'active' : ''}>
                     <a style={{ cursor: 'pointer' }} onClick={() => {
                         dispatch({ type: 'toggleMenu', payload: false })
                         router.push('/cabinet/operations-history');
@@ -172,11 +172,11 @@ const Menu = () => {
                         <a>Премиальная программа</a>
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link href="/reviews">
                         <a>Отзывы</a>
                     </Link>
-                </li>
+                </li> */}
                 <li>
                     <Link href="/faq">
                         <a>FAQ</a>

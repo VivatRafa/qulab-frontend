@@ -41,7 +41,7 @@ const Structure = () => {
                                     </p>
                                     {/* <p className="purpur">+7 (***) ***-**-14</p> */}
                                     <p>id:&nbsp;<span className="purpur">{id}</span></p>
-                                    <p>Инвестировано:&nbsp;<span className="purpur">{showAmount(invested)} QU</span></p>
+                                    {/* <p>Инвестировано:&nbsp;<span className="purpur">{showAmount(invested)} QU</span></p> */}
                                 </div>
                             ))}
                         </div>

@@ -77,7 +77,7 @@ const BaseUserStatusBlock = () => {
                     </p>
                     <p>
                         Осталось:
-                        <span className="red block">{nextStatus.amount - invested} QU</span>
+                        <span className="red block">{(nextStatus.amount - invested) > 0 ? nextStatus.amount - invested : 0 } QU</span>
                     </p>
                     <p>
                         Оборот структуры:

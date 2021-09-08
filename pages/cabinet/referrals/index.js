@@ -20,27 +20,26 @@ const Referrals = () => {
         return resp || [];
     })
 
-	const { data: balanceData = {}, error: balanceError } = useSWR('balance', async () => {
+	const { data: balanceData, error: balanceError } = useSWR('balance', async () => {
         const resp = await kyFetch.get('balance').json();
 
         return resp;
     })
 
-	const { data: referalInfo = {} } = useSWR('referralInfo', async () => {
+	const { data: referalInfo } = useSWR('referralInfo', async () => {
         const resp = await kyFetch.get('users/referral-info').json();
 
         return resp;
     })
 
-	const { referralCounts, activeReferralCounts } = referalInfo;
-	
+	const { referralCounts, activeReferralCounts } = referalInfo || {};
 
 	return (
 		(
 			<div>
 					<h1>Рефералы</h1>
 	
-					<BaseUserStatusBlock />
+					{topReferrals && referralAwards && balanceData && referalInfo && <BaseUserStatusBlock />}
 	
 					<h3>Топ 5 лидеров</h3>
 	
@@ -64,7 +63,7 @@ const Referrals = () => {
 					<h3>Премия</h3>
 					<div className="premia">
 						<p>Ваша премия составляет:</p>
-						<p className="fz24 green">{showAmount(balanceData.referral_award)} QU</p>
+						<p className="fz24 green">{showAmount(balanceData?.referral_award)} QU</p>
 					</div>	
 	
 					<div className="table-wrap margin">
@@ -96,7 +95,7 @@ const Referrals = () => {
 								<Image width="40" height="40" src="/static/img/money6.svg" alt="" />
 								<span className="purpur opacity">Доход с рефералов:</span>
 							</div>
-							<p className="purpur fz24">{showAmount(balanceData.referral_award)} QU</p>
+							<p className="purpur fz24">{showAmount(balanceData?.referral_award)} QU</p>
 						</div>
 						<div className="money-item">
 							<div className="money-item-title">
@@ -116,7 +115,7 @@ const Referrals = () => {
 	
 					{/* <p className="inviter margin">Ваш пригласитель: <span className="purpur">user1</span></p> */}
 	
-					<h3>Данные по реферальной системе</h3>
+					{/* <h3>Данные по реферальной системе</h3>
 	
 					<div className="table-wrap margin">
 						<table className="referal-table">
@@ -211,7 +210,7 @@ const Referrals = () => {
 								<td>0.3%</td>
 							</tr>
 						</table>
-					</div>
+					</div> */}
 	
 					<div className="info-section">
 						<h3>Как это работает?</h3>

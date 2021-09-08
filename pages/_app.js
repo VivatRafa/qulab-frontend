@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import Head from 'next/head'
 import DefaultLayout from 'layouts/default'
 import { SWRConfig } from 'swr';
 import { useRouter } from 'next/router';
@@ -14,7 +15,7 @@ const swrConfig = {
   revalidateOnFocus: false,
 }
 
-const landingPages = ['Home', 'About', 'Faq', 'Reviews', 'Program', 'Investor'];
+const landingPages = ['Home', 'About', 'Faq', 'Program', 'Investor'];
 const notAvailableForAuth = ['Registration', 'Login', 'PasswordRecovery'];
 
 
@@ -52,20 +53,25 @@ function MyApp({ Component, pageProps }) {
   const isCabinetPage = router.asPath.includes('cabinet');
 
   return (
-    <div className={`${isCabinetPage ? 'cabinet-page' : 'land-page'}`}>
-      <div className="page">
-        <SWRConfig
-          value={swrConfig}
-        >
-          <GlobalProvider>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </GlobalProvider>
+    <>
+      <Head>
+        <title>Qulab</title>
+      </Head>
+      <div className={`${isCabinetPage ? 'cabinet-page' : 'land-page'}`}>
+        <div className="page">
+          <SWRConfig
+            value={swrConfig}
+          >
+            <GlobalProvider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </GlobalProvider>
 
-        </SWRConfig>
+          </SWRConfig>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

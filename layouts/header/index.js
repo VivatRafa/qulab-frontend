@@ -56,11 +56,11 @@ const Header = ({ isLanding }) => {
                                     <a><span>Премиальная программа</span></a>
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href="/reviews">
                                     <a><span>Отзывы</span></a>
                                 </Link>
-                            </li>
+                            </li> */}
                             <li>
                                 <Link href="/faq">
                                     <a><span>FAQ</span></a>

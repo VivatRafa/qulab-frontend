@@ -36,11 +36,11 @@ const Footer = () => (
                                         <a><span>FAQ</span></a>
                                     </Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <Link href="/reviews">
                                         <a><span>Отзывы</span></a>
                                     </Link>
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                         <div className="footer-item">

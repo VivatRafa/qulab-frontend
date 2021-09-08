@@ -13,8 +13,8 @@ const tariffs = {
             from: 100,
             until: 1000,
         },
-        percent: 1.1,
-        days: 91,
+        percent: 0.015,
+        days: 50,
     },
     2: {
         id: 2,
@@ -23,8 +23,8 @@ const tariffs = {
             from: 1001,
             until: 5000,
         },
-        percent: 1.32,
-        days: 76
+        percent: 0.019,
+        days: 45
     },
     3: {
         id: 3,
@@ -33,8 +33,8 @@ const tariffs = {
             from: 5001,
             until: 9999999,
         },
-        percent: 1.58,
-        days: 64,
+        percent: 0.022,
+        days: 40,
     }
 }
 
@@ -44,14 +44,14 @@ const BaseDepositeCalculator = ({ withoutButton }) => {
     const [profit, setProfit] = useState(Big(0.0024).toNumber());
 
     useEffect(() => {
-        const dollarRate = Big(0.000024);
+        const dollarRate = Big(0.00002181);
 
         const profitVal = Big(invest).times(dollarRate).toNumber();
 
         setProfit(profitVal);
-    }, [invest])
+    }, [invest, tariff])
 
-    const { name, amount: { from, until }, percent, days } = tariffs[tariff];
+    const { name, amount: { from }, percent, days } = tariffs[tariff];
     const bigInvest = Big(invest);
     const bigPercent = Big(percent);
     const amountSum = bigInvest.plus(bigInvest.times(bigPercent).times(Big(days))).toNumber();
@@ -73,7 +73,7 @@ const BaseDepositeCalculator = ({ withoutButton }) => {
               <div className="right">
                 <div className="right-item active">
                   <div className="percent">
-                    <p>{percent}<span>%</span></p>
+                    <p>{bigPercent.times(Big(100)).toNumber()}<span>%</span></p>
                     <p>в день</p>
                   </div>
                   <p>Сумма депозита: <span>от {from} QU</span></p>

@@ -4,7 +4,9 @@ import useSWR, { mutate } from 'swr';
 import { useForm } from 'react-hook-form';
 import kyFetch from 'api';
 import dayjs from 'dayjs';
-import BaseInput from '../../../components/base/BaseInput';;
+import BaseInput from '../../../components/base/BaseInput';import { statusClasses } from '../replenishment';
+;
+import payments from 'config/payments';
 
 const defaultFormValue = {
     amount: null,
@@ -43,10 +45,12 @@ const Withdrawal = () => {
                 amount,
                 date,
                 id,
+                status,
              }) => ({
                  amount,
                  date: dayjs(date).format('DD.MM.YYYY'),
                  id,
+                 status,
             })).reverse();
         }
 
@@ -95,7 +99,10 @@ const Withdrawal = () => {
                         </div>
                     </div>
                     
-                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>Комиссия для вывода средств варьируется от 0.00060 BTC(~24 USD) </div>
+                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>Комиссия для вывода средств:</div>
+                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>от 10 QU до 49 QU - 10%</div>
+                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>от 50 QU до 99 QU - 20%</div>
+                    <div style={{ marginBottom: '10px', fontSize: '14px' }}>от 100 QU - 4.5%</div>
 
                     <button type="submit" className="button">Вывести средства</button>
                 </form>
@@ -116,7 +123,7 @@ const Withdrawal = () => {
                     </thead>
                     <tbody>
                         {isWithdrawExist ? 
-                            withdrawList?.map(({ id, amount, date }) => (
+                            withdrawList?.map(({ id, amount, date, status }) => (
                                 <tr key={id}>
                                     <td>{date}</td>
                                     <td>{amount} QU</td>
@@ -127,7 +134,7 @@ const Withdrawal = () => {
                                         <Image height="18" width="18" src="/static/img/btc.svg" alt="" />
                                         BitCoin
                                     </td>
-                                    <td className="green">Выполнено</td>
+                                    <td className={statusClasses[status]}>{payments.statuses[status]}</td>
                                 </tr>
                             )) : (
                                 <tr>

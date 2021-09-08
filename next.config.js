@@ -4,7 +4,7 @@ const withImages = require('next-images');
 module.exports = withTM(
     withImages({
         env: {
-            API_URL: 'http://45.147.177.198:3001',
+            API_URL: 'https://qulab.club/api',
         },
         eslint: {
             // Warning: Dangerously allow production builds to successfully complete even if

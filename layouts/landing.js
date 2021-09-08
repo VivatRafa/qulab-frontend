@@ -45,12 +45,12 @@ const Landing = ({ children }) => {
                         router.push('/program');
                     }}>Премиальная программа</a>
                 </li>
-                <li>
+                {/* <li>
                     <a onClick={() => {
                         dispatch({ type: 'toggleMenu', payload: false })
                         router.push('/reviews');
                     }}>Отзывы</a>
-                </li>
+                </li> */}
                 <li>
                     <a onClick={() => {
                         dispatch({ type: 'toggleMenu', payload: false })

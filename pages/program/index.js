@@ -31,7 +31,7 @@ const Program = () => {
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 500 QU</span></p>
-                                <p>Оборот структуры: <span>X</span></p>
+                                <p>Оборот структуры: <span>1000 QU</span></p>
                             </div>
                             <div className="status-item">
                                 <div className="icon">
@@ -44,12 +44,12 @@ const Program = () => {
                                 <div className="bonus">
                                     <h5>Бонус:</h5>
                                     <div className="bonus-wrap">
-                                        <p>6<span>%</span></p>
+                                        <p>7<span>%</span></p>
                                         <p>от личных продаж</p>
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 1000 QU</span></p>
-                                <p>Оборот структуры: <span>X</span></p>
+                                <p>Оборот структуры: <span>5000 QU</span></p>
                             </div>
                             <div className="status-item">
                                 <div className="icon">
@@ -62,12 +62,12 @@ const Program = () => {
                                 <div className="bonus">
                                     <h5>Бонус:</h5>
                                     <div className="bonus-wrap">
-                                        <p>7<span>%</span></p>
+                                        <p>8<span>%</span></p>
                                         <p>от личных продаж</p>
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 5000 QU</span></p>
-                                <p>Оборот структуры: <span>1 линия {'>'} 2500 QU</span></p>
+                                <p>Оборот структуры: <span>10000 QU</span></p>
                             </div>
                             <div className="status-item">
                                 <div className="icon">
@@ -80,12 +80,12 @@ const Program = () => {
                                 <div className="bonus">
                                     <h5>Бонус:</h5>
                                     <div className="bonus-wrap">
-                                        <p>8<span>%</span></p>
+                                        <p>10<span>%</span></p>
                                         <p>от личных продаж</p>
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 5000 QU</span></p>
-                                <p>Оборот структуры: <span>1-2 линии {'>'} 20 000 QU</span></p>
+                                <p>Оборот структуры: <span>15000 QU</span></p>
                             </div>
                             <div className="status-item">
                                 <div className="icon">
@@ -98,12 +98,12 @@ const Program = () => {
                                 <div className="bonus">
                                     <h5>Бонус:</h5>
                                     <div className="bonus-wrap">
-                                        <p>9<span>%</span></p>
+                                        <p>11<span>%</span></p>
                                         <p>от личных продаж</p>
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 5000 QU</span></p>
-                                <p>Оборот структуры: <span>1-3 линии {'>'} 50 000 QU</span></p>
+                                <p>Оборот структуры: <span>20000 QU</span></p>
                             </div>
                             <div className="status-item">
                                 <div className="icon">
@@ -116,12 +116,12 @@ const Program = () => {
                                 <div className="bonus">
                                     <h5>Бонус:</h5>
                                     <div className="bonus-wrap">
-                                        <p>10<span>%</span></p>
+                                        <p>12<span>%</span></p>
                                         <p>от личных продаж</p>
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 5000 QU</span></p>
-                                <p>Оборот структуры: <span>1-4 линии {'>'} 200 000 QU</span></p>
+                                <p>Оборот структуры: <span>30000 QU</span></p>
                             </div>
                             <div className="status-item">
                                 <div className="icon">
@@ -134,12 +134,12 @@ const Program = () => {
                                 <div className="bonus">
                                     <h5>Бонус:</h5>
                                     <div className="bonus-wrap">
-                                        <p>11<span>%</span></p>
+                                        <p>13<span>%</span></p>
                                         <p>от личных продаж</p>
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 5000 QU</span></p>
-                                <p>Оборот структуры: <span>1-5 линии {'>'} 500 000 QU</span></p>
+                                <p>Оборот структуры: <span>50000 QU</span></p>
                             </div>
                             <div className="status-item">
                                 <div className="icon">
@@ -152,12 +152,12 @@ const Program = () => {
                                 <div className="bonus">
                                     <h5>Бонус:</h5>
                                     <div className="bonus-wrap">
-                                        <p>12<span>%</span></p>
+                                        <p>14<span>%</span></p>
                                         <p>от личных продаж</p>
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 5000 QU</span></p>
-                                <p>Оборот структуры: <span>1-6 линии {'>'} 1 000 000 QU</span></p>
+                                <p>Оборот структуры: <span>100000 QU</span></p>
                             </div>
                             <div className="status-item">
                                 <div className="icon">
@@ -170,12 +170,12 @@ const Program = () => {
                                 <div className="bonus">
                                     <h5>Бонус:</h5>
                                     <div className="bonus-wrap">
-                                        <p>13<span>%</span></p>
+                                        <p>15<span>%</span></p>
                                         <p>от личных продаж</p>
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 5000 QU</span></p>
-                                <p>Оборот структуры: <span>1-7 линии {'>'} 3 000 000 QU</span></p>
+                                <p>Оборот структуры: <span>500000 QU</span></p>
                             </div>
                             <div className="status-item">
                                 <div className="icon">
@@ -188,14 +188,14 @@ const Program = () => {
                                 <div className="bonus">
                                     <h5>Бонус:</h5>
                                     <div className="bonus-wrap">
-                                        <p>14<span>%</span></p>
+                                        <p>16<span>%</span></p>
                                         <p>от личных продаж</p>
                                     </div>
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 5000 QU</span></p>
-                                <p>Оборот структуры: <span>1-8 линии {'>'} 10 000 000 QU</span></p>
+                                <p>Оборот структуры: <span>1000000 QU</span></p>
                             </div>
-                            <div className="status-item">
+                            {/* <div className="status-item">
                                 <div className="icon">
                                     <Image src="/static/img/status-icon10.svg" alt="" width="40" height="40" />
                                 </div>
@@ -212,7 +212,7 @@ const Program = () => {
                                 </div>
                                 <p>Личный оборот (вклад): <span>{'>'} 5000 QU</span></p>
                                 <p>Оборот структуры: <span>1-9 линии {'>'} 30 000 000 QU</span></p>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="status-next">
@@ -446,7 +446,7 @@ const Program = () => {
                 </div>
             </section>
 
-            <section id="referral" className="program-text-section">
+            {/* <section id="referral" className="program-text-section">
                 <div className="wrapper">
                     <h2>Реферальная программа</h2>
 
@@ -558,7 +558,7 @@ const Program = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
         </>
     )
 }

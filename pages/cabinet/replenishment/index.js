@@ -5,7 +5,7 @@ import QRCode from "react-qr-code";
 import { useForm } from 'react-hook-form';
 import kyFetch from 'api';
 import Image from 'next/image';
-import BaseInput from 'components/base/BaseInput';;
+import BaseInput from 'components/base/BaseInput';
 import payments from 'config/payments';
 
 // images
@@ -17,7 +17,7 @@ const defaultFormValue = {
     amount: null,
 }
 
-const statusClasses = ['green', 'yellow', 'red'];
+export const statusClasses = ['green', 'yellow', 'red'];
 
 const Replenishment = () => {    
     const { register, handleSubmit, getValues, watch, reset, formState: { errors }, setError, clearErrors } = useForm();
